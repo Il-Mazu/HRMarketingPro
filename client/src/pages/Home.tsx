@@ -57,13 +57,20 @@ const Home = () => {
     <div>
       {/* Hero Section */}
       <section id="hero" className="min-h-screen relative flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0 bg-charcoal bg-opacity-70"></div>
+        <div className="absolute inset-0 z-0 bg-charcoal bg-opacity-70 bg-blend-multiply" 
+             style={{
+               backgroundImage: 'url("/images/hero-bg.png"), url("/images/medieval-pattern.svg")',
+               backgroundSize: 'cover, 300px',
+               backgroundPosition: 'center, center',
+               backgroundRepeat: 'no-repeat, repeat',
+             }}>
+        </div>
         
         {/* Animated sword component */}
         <ScrollSword mainTitleId="main-title" />
         
         <div className="container mx-auto px-4 z-20 text-center">
-          <h1 id="main-title" className="font-title text-5xl md:text-7xl lg:text-8xl mb-6 text-secondary tracking-widest">
+          <h1 id="main-title" className="font-title text-5xl md:text-7xl lg:text-8xl mb-6 text-secondary tracking-widest glow-text">
             MYSTERIUM <br /><span className="text-4xl md:text-6xl text-foreground">MEDII AEVI</span>
           </h1>
           <p ref={introTextRef} className="font-medieval text-xl md:text-2xl text-foreground italic max-w-3xl mx-auto opacity-0">
@@ -73,11 +80,14 @@ const Home = () => {
             <Link href="#about" onClick={(e) => {
               e.preventDefault();
               document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
-            }} className="inline-block px-8 py-4 bg-primary text-foreground border-2 border-secondary hover:bg-primary/80 transition-all duration-300 font-medieval text-lg tracking-wide">
+            }} className="inline-block px-8 py-4 bg-primary text-foreground border-2 border-secondary hover:bg-primary/80 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95">
               Inizia il Viaggio
             </Link>
           </div>
         </div>
+        
+        {/* Decorative elements */}
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-charcoal to-transparent"></div>
       </section>
 
       {/* About Section */}

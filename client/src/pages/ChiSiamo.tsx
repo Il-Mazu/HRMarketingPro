@@ -2,53 +2,61 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "wouter";
+import TimelineItem from "../components/TimelineItem";
 
 // Assicuriamoci che ScrollTrigger sia registrato
 gsap.registerPlugin(ScrollTrigger);
 
 interface TimelineEvent {
-  year: string;
   title: string;
   description: string;
-  imageSrc?: string;
+  imageSrc: string;
+  imageAlt: string;
+  imagePosition: "left" | "right";
 }
 
 const friendshipTimeline: TimelineEvent[] = [
   {
-    year: "2005",
-    title: "Primo Incontro",
-    description: "Il nostro primo incontro alla fiera medievale di Montefiascone. Entrambi appassionati di storia medievale, ci siamo trovati nello stesso stand di libri antichi.",
-    imageSrc: "https://images.unsplash.com/photo-1543357480-c60d0dc78091?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    title: "2005 - Primo Incontro",
+    description: "Il nostro primo incontro alla fiera medievale di Montefiascone. Entrambi appassionati di storia medievale, ci siamo trovati nello stesso stand di libri antichi e abbiamo scoperto la nostra comune passione per i manoscritti medievali e la storia dei templari.",
+    imageSrc: "/images/hero-bg.png",
+    imageAlt: "Fiera medievale con libri antichi",
+    imagePosition: "right",
   },
   {
-    year: "2008",
-    title: "Primo Viaggio Insieme",
-    description: "Il nostro primo viaggio insieme alla scoperta dei castelli della Loira in Francia. Un'esperienza indimenticabile che ha cementato la nostra amicizia.",
-    imageSrc: "https://images.unsplash.com/photo-1591105575839-1b77252d08bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    title: "2008 - Primo Viaggio Insieme",
+    description: "Il nostro primo viaggio insieme alla scoperta dei castelli della Loira in Francia. Un'esperienza indimenticabile che ha cementato la nostra amicizia attraverso l'esplorazione di antiche fortezze, sale dei cavalieri e biblioteche storiche che custodiscono documenti risalenti al Medioevo.",
+    imageSrc: "/images/hero-bg.png",
+    imageAlt: "Castello medievale in Francia",
+    imagePosition: "left",
   },
   {
-    year: "2012",
-    title: "Fondazione del Club di Storia",
-    description: "Abbiamo fondato insieme il 'Club degli Appassionati di Storia Medievale' nella nostra città, creando una comunità di persone con la nostra stessa passione.",
-    imageSrc: "https://images.unsplash.com/photo-1551356277-d357c989300c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    title: "2012 - Fondazione del Club di Storia",
+    description: "Abbiamo fondato insieme il 'Club degli Appassionati di Storia Medievale' nella nostra città, creando una comunità di persone con la nostra stessa passione. Ogni mese organizziamo incontri tematici, visite guidate e laboratori pratici per riscoprire tecniche e tradizioni medievali.",
+    imageSrc: "/images/hero-bg.png",
+    imageAlt: "Persone riunite ad un evento storico",
+    imagePosition: "right",
   },
   {
-    year: "2015",
-    title: "Pubblicazione del Nostro Primo Libro",
-    description: "Dopo anni di ricerca, abbiamo pubblicato il nostro primo libro insieme: 'Segreti e Leggende del Medioevo Italiano'.",
-    imageSrc: "https://images.unsplash.com/photo-1476275466078-4007374efbbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    title: "2015 - Pubblicazione del Nostro Primo Libro",
+    description: "Dopo anni di ricerca in biblioteche e archivi storici, abbiamo pubblicato il nostro primo libro insieme: 'Segreti e Leggende del Medioevo Italiano'. Il volume raccoglie storie poco conosciute e curiosità sorprendenti che abbiamo scoperto durante i nostri viaggi attraverso borghi e castelli italiani.",
+    imageSrc: "/images/hero-bg.png",
+    imageAlt: "Libro antico su un tavolo in legno",
+    imagePosition: "left",
   },
   {
-    year: "2018",
-    title: "Partecipazione al Festival Medievale",
-    description: "Siamo stati invitati come relatori al prestigioso Festival Medievale di Monteriggioni, un riconoscimento importante per il nostro lavoro.",
-    imageSrc: "https://images.unsplash.com/photo-1527168027773-0cc890c4f42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    title: "2018 - Partecipazione al Festival Medievale",
+    description: "Siamo stati invitati come relatori al prestigioso Festival Medievale di Monteriggioni, un riconoscimento importante per il nostro lavoro di divulgazione storica. La nostra conferenza sulle superstizioni e credenze popolari nel Medioevo ha attirato un pubblico numeroso e interessato.",
+    imageSrc: "/images/hero-bg.png",
+    imageAlt: "Festival medievale con bandiere e costumi d'epoca",
+    imagePosition: "right",
   },
   {
-    year: "2022",
-    title: "Creazione del Sito Web",
-    description: "Abbiamo deciso di condividere la nostra passione con il mondo intero creando questo sito web, un progetto che ci sta molto a cuore.",
-    imageSrc: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+    title: "2022 - Creazione del Sito Web",
+    description: "Abbiamo deciso di condividere la nostra passione con il mondo intero creando questo sito web, un progetto che ci sta molto a cuore. Mysterium Medii Aevi rappresenta il culmine del nostro percorso insieme e uno strumento per divulgare la ricchezza culturale di un'epoca affascinante e complessa.",
+    imageSrc: "/images/hero-bg.png",
+    imageAlt: "Computer moderno con contenuti medievali",
+    imagePosition: "left",
   }
 ];
 
@@ -105,12 +113,12 @@ const ChiSiamo = () => {
       <div className="h-20"></div> {/* Spacer for fixed header */}
       
       {/* Hero Banner */}
-      <section className="py-16 bg-charcoal/90 border-b border-secondary/30">
+      <section className="py-16 bg-gradient-to-b from-charcoal to-charcoal/80 border-b border-secondary/20">
         <div className="container mx-auto px-4 pt-8">
-          <h1 ref={titleRef} className="font-title text-4xl md:text-5xl text-secondary mb-6 text-center">
+          <h1 ref={titleRef} className="font-title text-4xl md:text-6xl text-secondary mb-6 text-center glow-text">
             Chi Siamo
           </h1>
-          <p className="text-foreground max-w-3xl mx-auto text-center font-medieval text-lg">
+          <p className="text-foreground max-w-3xl mx-auto text-center font-medieval text-xl leading-relaxed">
             La storia della nostra amicizia e della nostra passione per il Medioevo
           </p>
         </div>
@@ -119,7 +127,7 @@ const ChiSiamo = () => {
       {/* About Us Content */}
       <section className="py-16 bg-charcoal/80">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto bg-primary/90 rounded-lg overflow-hidden shadow-2xl border border-secondary/20 mb-16">
+          <div className="max-w-4xl mx-auto rounded-lg overflow-hidden shadow-2xl mb-16 transform hover:scale-[1.01] transition-all duration-500">
             <div className="p-8 md:p-12 parchment">
               <h2 className="font-medieval text-3xl text-primary mb-6 text-center">La Nostra Storia</h2>
               
@@ -140,63 +148,37 @@ const ChiSiamo = () => {
           </div>
           
           {/* Interactive Timeline */}
-          <h2 className="font-title text-3xl text-secondary mb-12 text-center">La Linea del Tempo della Nostra Amicizia</h2>
-          
-          <div ref={timelineRef} className="relative timeline">
-            {/* Center line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 bg-secondary/50"></div>
+          <div className="max-w-5xl mx-auto">
+            <h2 className="font-title text-3xl md:text-4xl text-secondary mb-12 text-center glow-text">
+              La Linea del Tempo della Nostra Amicizia
+            </h2>
             
-            {/* Timeline events */}
-            {friendshipTimeline.map((event, index) => (
-              <div 
-                key={index} 
-                className={`timeline-event flex mb-16 items-center ${
-                  index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
-                }`}
-              >
-                {/* Content side */}
-                <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                  <div className={`p-6 parchment rounded-lg shadow-lg border border-secondary/20 ${
-                    index % 2 === 0 ? 'ml-auto' : 'mr-auto'
-                  }`}>
-                    <div className="font-medieval text-xl text-primary mb-2">{event.year}</div>
-                    <h3 className="font-title text-2xl text-charcoal mb-3">{event.title}</h3>
-                    <p className="text-charcoal text-sm md:text-base">{event.description}</p>
-                  </div>
-                </div>
-                
-                {/* Center marker */}
-                <div className="w-2/12 flex justify-center">
-                  <div className="bg-secondary w-5 h-5 rounded-full border-4 border-primary z-10"></div>
-                </div>
-                
-                {/* Image side */}
-                <div className={`w-5/12 ${index % 2 === 0 ? 'pl-8' : 'pr-8'}`}>
-                  {event.imageSrc && (
-                    <img 
-                      src={event.imageSrc} 
-                      alt={event.title} 
-                      className={`rounded-lg shadow-lg ${
-                        index % 2 === 0 ? 'mr-auto' : 'ml-auto'
-                      } w-full max-w-xs object-cover h-48`}
-                    />
-                  )}
-                </div>
-              </div>
-            ))}
+            <div ref={timelineRef} className="relative pl-6 border-l-2 border-secondary/50 mb-16">
+              {friendshipTimeline.map((event, index) => (
+                <TimelineItem
+                  key={index}
+                  title={event.title}
+                  description={event.description}
+                  imageSrc={event.imageSrc}
+                  imageAlt={event.imageAlt}
+                  imagePosition={event.imagePosition}
+                  index={index}
+                />
+              ))}
+            </div>
           </div>
           
           {/* Call to action */}
           <div className="text-center mt-16">
             <Link 
               href="/curiosities"
-              className="inline-block px-8 py-4 bg-primary text-foreground border-2 border-secondary hover:bg-primary/80 transition-all duration-300 font-medieval text-lg tracking-wide mr-4"
+              className="inline-block px-8 py-4 bg-primary text-foreground border-2 border-secondary hover:bg-primary/80 transition-all duration-300 font-medieval text-lg tracking-wide mr-4 hover:scale-105 active:scale-95"
             >
               Esplora le Curiosità
             </Link>
             <Link 
               href="/"
-              className="inline-block px-8 py-4 bg-charcoal text-foreground border-2 border-secondary hover:bg-charcoal/80 transition-all duration-300 font-medieval text-lg tracking-wide"
+              className="inline-block px-8 py-4 bg-charcoal text-foreground border-2 border-secondary hover:bg-charcoal/80 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95"
             >
               Torna all'Inizio
             </Link>

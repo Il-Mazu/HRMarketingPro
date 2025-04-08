@@ -69,7 +69,7 @@ const ScrollSword = ({ mainTitleId }: ScrollSwordProps) => {
       <img 
         ref={swordRef}
         className="w-1/4 md:w-1/6 transition-transform duration-500"
-        src="https://images.unsplash.com/photo-1593466144596-10226e97e134?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        src="/images/medieval-sword.svg"
         alt="Spada medievale decorativa" 
       />
     </div>

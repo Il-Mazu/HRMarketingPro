@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400px" height="800px" viewBox="0 0 400 800" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <title>Medieval Sword</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="swordShine">
+            <stop stop-color="#FFFFFF" stop-opacity="0.8" offset="0%"></stop>
+            <stop stop-color="#B3B3B3" stop-opacity="0.5" offset="33%"></stop>
+            <stop stop-color="#999999" stop-opacity="0.7" offset="66%"></stop>
+            <stop stop-color="#666666" stop-opacity="0.6" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="goldGradient">
+            <stop stop-color="#FDD868" offset="0%"></stop>
+            <stop stop-color="#C9A227" offset="50%"></stop>
+            <stop stop-color="#8B7513" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="woodGradient">
+            <stop stop-color="#8B5A2B" offset="0%"></stop>
+            <stop stop-color="#6B4423" offset="52%"></stop>
+            <stop stop-color="#513019" offset="100%"></stop>
+        </linearGradient>
+        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="10"></feGaussianBlur>
+            <feOffset dx="0" dy="10" result="offsetblur"></feOffset>
+            <feComponentTransfer>
+                <feFuncA type="linear" slope="0.5"></feFuncA>
+            </feComponentTransfer>
+            <feMerge>
+                <feMergeNode></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" filter="url(#shadow)">
+        <!-- Blade -->
+        <path d="M200,50 L170,200 L170,550 L200,580 L230,550 L230,200 L200,50 Z" fill="url(#swordShine)" stroke="#666666" stroke-width="2"></path>
+        <path d="M200,50 L190,200 L190,540 L200,560 L210,540 L210,200 L200,50 Z" fill="#CCCCCC" opacity="0.6"></path>
+        
+        <!-- Blood groove -->
+        <path d="M200,100 L195,200 L195,520 L200,530 L205,520 L205,200 L200,100 Z" fill="#999999" opacity="0.8"></path>
+
+        <!-- Hilt crossguard -->
+        <path d="M140,550 L170,550 L170,580 L230,580 L230,550 L260,550 L260,580 L230,580 L200,600 L170,580 L140,580 Z" fill="url(#goldGradient)" stroke="#8B7513" stroke-width="2"></path>
+        
+        <!-- Decorative elements on crossguard -->
+        <circle cx="150" cy="565" r="8" fill="#A00" stroke="#8B7513" stroke-width="1"></circle>
+        <circle cx="250" cy="565" r="8" fill="#A00" stroke="#8B7513" stroke-width="1"></circle>
+        <circle cx="200" cy="580" r="6" fill="#A00" stroke="#8B7513" stroke-width="1"></circle>
+        
+        <!-- Grip -->
+        <path d="M185,600 L215,600 L220,700 L180,700 Z" fill="url(#woodGradient)" stroke="#513019" stroke-width="1"></path>
+        
+        <!-- Grip wrap -->
+        <path d="M185,610 L215,610 M185,620 L215,620 M185,630 L215,630 M185,640 L215,640 M185,650 L215,650 M185,660 L215,660 M185,670 L215,670 M185,680 L215,680 M185,690 L215,690" stroke="#513019" stroke-width="2"></path>
+        
+        <!-- Pommel -->
+        <path d="M180,700 L220,700 L215,750 L185,750 Z" fill="url(#goldGradient)" stroke="#8B7513" stroke-width="2"></path>
+        <circle cx="200" cy="725" r="10" fill="#A00" stroke="#8B7513" stroke-width="1"></circle>
+    </g>
+</svg>

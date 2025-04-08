@@ -61,19 +61,22 @@ const TimelineItem = ({
   
   return (
     <div ref={itemRef} className="timeline-item pb-16 opacity-0">
-      <div className="timeline-marker"></div>
-      <div className="ml-8 md:ml-12">
-        <div className="parchment p-6 md:p-8 rounded-lg">
-          <h3 className="font-medieval text-2xl text-primary mb-4">{title}</h3>
-          <div className={`flex flex-col ${imagePosition === "left" ? "md:flex-row-reverse" : "md:flex-row"} gap-6`}>
+      <div className="timeline-marker absolute left-0 w-6 h-6 rounded-full bg-secondary border-4 border-primary shadow-glow"></div>
+      <div className="ml-10 md:ml-16 relative">
+        {/* Vertical line connecting timeline items */}
+        <div className="absolute left-[-30px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-secondary via-secondary/50 to-transparent h-full"></div>
+        
+        <div className="parchment p-6 md:p-8 md:p-10 transform hover:scale-[1.02] transition-transform duration-300">
+          <h3 className="font-medieval text-2xl md:text-3xl text-primary mb-4 tracking-wide">{title}</h3>
+          <div className={`flex flex-col ${imagePosition === "left" ? "md:flex-row-reverse" : "md:flex-row"} gap-6 md:gap-8`}>
             <div className="md:w-2/3">
-              <p className="text-charcoal">{description}</p>
+              <p className="text-charcoal leading-relaxed">{description}</p>
             </div>
-            <div className="md:w-1/3">
+            <div className="md:w-1/3 flex justify-center items-start">
               <img 
                 src={imageSrc} 
                 alt={imageAlt} 
-                className="rounded-md shadow-md w-full h-48 object-cover"
+                className="rounded-md shadow-xl w-full h-48 object-cover border border-secondary/20 transition-all duration-500 hover:shadow-2xl hover:border-secondary/40"
               />
             </div>
           </div>
