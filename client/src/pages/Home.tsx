@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "wouter";
+import ScrollSword from "@/components/ScrollSword";
 
 // Assicuriamoci che ScrollTrigger sia registrato
 gsap.registerPlugin(ScrollTrigger);
@@ -189,7 +190,7 @@ const Home = () => {
   return (
     <div className="min-h-screen relative">
       {/* Hero section con sfondo a schermo intero */}
-      <section className="relative min-h-screen flex flex-col justify-between overflow-hidden">
+      <section id="hero" className="relative min-h-screen flex flex-col justify-between overflow-hidden">
         {/* Background con cavaliere e castello - immagine aggiornata */}
         <div 
           className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
@@ -214,6 +215,7 @@ const Home = () => {
         <div className="relative z-10 pt-32 pb-12 text-center">
           <h1 
             ref={titleRef} 
+            id="mainTitle"
             className="font-title text-5xl md:text-7xl lg:text-8xl text-secondary tracking-widest glow-text"
           >
             MYSTERIUM
@@ -227,8 +229,10 @@ const Home = () => {
           </h2>
         </div>
         
-        {/* Spazio centrale vuoto per mostrare il cavaliere */}
-        <div className="flex-grow"></div>
+        {/* Spazio centrale con la spada decorativa */}
+        <div className="flex-grow relative">
+          <ScrollSword mainTitleId="mainTitle" />
+        </div>
         
         {/* Pergamena in basso */}
         <div 
