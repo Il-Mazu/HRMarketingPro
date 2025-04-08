@@ -51,19 +51,21 @@ const Header = () => {
             <span>Home</span>
             <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === "/" ? "w-full" : ""}`}></span>
           </Link>
-          <a 
-            href="/#introduzione" 
-            className="text-foreground hover:text-secondary transition-colors duration-300 font-medieval relative group"
+          <Link 
+            href="/" 
+            className={`font-medieval relative transition-colors duration-300 group text-foreground hover:text-secondary`}
             onClick={(e) => {
+              e.preventDefault();
               if (location === "/") {
-                e.preventDefault();
                 document.getElementById("introduzione")?.scrollIntoView({ behavior: "smooth" });
+              } else {
+                window.location.href = "/#introduzione";
               }
             }}
           >
             <span>Introduzione</span>
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300"></span>
-          </a>
+          </Link>
           <Link 
             href="/curiosities" 
             className={`font-medieval relative transition-colors duration-300 group ${
@@ -114,19 +116,21 @@ const Header = () => {
               {location === "/" && <span className="absolute -bottom-1 left-1/4 right-1/4 h-0.5 bg-secondary"></span>}
             </span>
           </Link>
-          <a 
-            href="/#introduzione" 
+          <Link 
+            href="/" 
             className="text-foreground hover:text-secondary transition-colors duration-300 font-medieval text-center py-2"
             onClick={(e) => {
               closeMobileMenu();
+              e.preventDefault();
               if (location === "/") {
-                e.preventDefault();
                 document.getElementById("introduzione")?.scrollIntoView({ behavior: "smooth" });
+              } else {
+                window.location.href = "/#introduzione";
               }
             }}
           >
             Introduzione
-          </a>
+          </Link>
           <Link 
             href="/curiosities" 
             className={`font-medieval text-center py-2 transition-colors duration-300 ${

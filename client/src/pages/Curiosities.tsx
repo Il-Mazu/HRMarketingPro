@@ -127,7 +127,7 @@ const Curiosities = () => {
       </section>
       
       {/* Timeline Section */}
-      <section className="py-16 bg-black">
+      <section className="py-16 bg-charcoal/80">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto pl-8 relative">
             {/* Timeline Items con design moderno */}
@@ -145,7 +145,7 @@ const Curiosities = () => {
           </div>
           
           {/* Call to action */}
-          <div className="text-center mt-16">
+          <div className="text-center mt-16 bg-transparent">
             <Link 
               href="/"
               className="group relative inline-block px-8 py-4 bg-secondary text-secondary-foreground border-2 border-secondary/80 hover:bg-secondary/90 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95"
