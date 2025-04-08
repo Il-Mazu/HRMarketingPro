@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "wouter";
-import ScrollSword from "@/components/ScrollSword";
 
 // Assicuriamoci che ScrollTrigger sia registrato
 gsap.registerPlugin(ScrollTrigger);
@@ -229,10 +228,8 @@ const Home = () => {
           </h2>
         </div>
         
-        {/* Spazio centrale con la spada decorativa */}
-        <div className="flex-grow relative">
-          <ScrollSword mainTitleId="mainTitle" />
-        </div>
+        {/* Spazio centrale visibile per mostrare il cavaliere */}
+        <div className="flex-grow relative pointer-events-none"></div>
         
         {/* Pergamena in basso */}
         <div 
