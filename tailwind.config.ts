@@ -52,6 +52,8 @@ export default {
         parchment: "hsl(40 30% 94%)",
         goldLeaf: "hsl(42 60% 47%)",
         bloodRed: "hsl(0 56% 23%)",
+        "scroll-color": "hsl(39 56% 81%)",
+        "scroll-edge": "hsl(36 56% 52%)",
         chart: {
           "1": "hsl(var(--chart-1))",
           "2": "hsl(var(--chart-2))",

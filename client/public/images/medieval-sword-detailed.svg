@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 500" width="120" height="500">
+  <!-- Definizione gradienti e pattern -->
+  <defs>
+    <!-- Gradiente per la lama -->
+    <linearGradient id="bladeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e0e0e0; stop-opacity:1" />
+      <stop offset="45%" style="stop-color:#ffffff; stop-opacity:1" />
+      <stop offset="55%" style="stop-color:#f5f5f5; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c0c0c0; stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradiente per bordo lama -->
+    <linearGradient id="bladeEdgeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#b0b0b0; stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#e0e0e0; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a0a0a0; stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradiente per l'elsa dorata -->
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#b38728; stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#fcf6ba; stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#bf953f; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffd700; stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradiente per il pomello -->
+    <radialGradient id="pommelGradient" cx="50%" cy="50%" r="50%" fx="30%" fy="30%">
+      <stop offset="0%" style="stop-color:#fcf6ba; stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#bf953f; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c5c20; stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Pattern per l'impugnatura -->
+    <pattern id="gripPattern" patternUnits="userSpaceOnUse" width="10" height="10" patternTransform="rotate(45)">
+      <rect width="10" height="10" fill="#301b0b"/>
+      <rect width="5" height="5" fill="#462912"/>
+      <rect x="5" y="5" width="5" height="5" fill="#462912"/>
+    </pattern>
+    
+    <!-- Filtro per il bagliore -->
+    <filter id="swordGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="glow"/>
+      <feBlend in="SourceGraphic" in2="glow" mode="screen"/>
+    </filter>
+    
+    <!-- Dettagli per incisioni sull'elsa -->
+    <pattern id="crosshatchPattern" patternUnits="userSpaceOnUse" width="5" height="5" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="5" stroke="#7c5c20" stroke-width="0.5"/>
+      <line x1="0" y1="0" x2="5" y2="0" stroke="#7c5c20" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+  
+  <!-- Gruppo principale spada -->
+  <g id="sword">
+    <!-- Lama della spada -->
+    <g id="blade">
+      <!-- Corpo principale della lama -->
+      <path d="M60,0 L70,100 L70,305 L60,310 L50,305 L50,100 Z" fill="url(#bladeGradient)"/>
+      
+      <!-- Bordi della lama -->
+      <path d="M60,0 L70,100 L70,305 L60,310 Z" fill="url(#bladeEdgeGradient)" opacity="0.6"/>
+      <path d="M60,0 L50,100 L50,305 L60,310 Z" fill="url(#bladeEdgeGradient)" opacity="0.6"/>
+      
+      <!-- Scanalatura centrale -->
+      <path d="M62,40 L62,300 L58,300 L58,40 Z" fill="#c0c0c0" opacity="0.4"/>
+      
+      <!-- Punta della spada -->
+      <path d="M60,0 L65,20 L60,15 L55,20 Z" fill="#a0a0a0"/>
+      
+      <!-- Riflessi sulla lama (linee sottili) -->
+      <line x1="60" y1="10" x2="60" y2="300" stroke="#ffffff" stroke-width="0.7" opacity="0.7"/>
+      <line x1="55" y1="50" x2="55" y2="300" stroke="#ffffff" stroke-width="0.4" opacity="0.5"/>
+      <line x1="65" y1="50" x2="65" y2="300" stroke="#ffffff" stroke-width="0.4" opacity="0.5"/>
+    </g>
+    
+    <!-- Guardia della spada (elsa) -->
+    <g id="hilt">
+      <rect x="35" y="310" width="50" height="10" fill="url(#goldGradient)"/>
+      <rect x="25" y="320" width="70" height="15" rx="2" fill="url(#goldGradient)"/>
+      <rect x="30" y="335" width="60" height="5" fill="#7c5c20"/>
+      
+      <!-- Decorazioni sulla guardia -->
+      <circle cx="35" cy="320" r="4" fill="url(#pommelGradient)"/>
+      <circle cx="85" cy="320" r="4" fill="url(#pommelGradient)"/>
+      <rect x="40" y="322" width="40" height="10" fill="url(#crosshatchPattern)" opacity="0.7"/>
+    </g>
+    
+    <!-- Impugnatura -->
+    <g id="grip">
+      <rect x="50" y="340" width="20" height="90" rx="2" fill="url(#gripPattern)"/>
+      
+      <!-- Fascia dell'impugnatura -->
+      <rect x="48" y="350" width="24" height="5" rx="1" fill="url(#goldGradient)"/>
+      <rect x="48" y="370" width="24" height="5" rx="1" fill="url(#goldGradient)"/>
+      <rect x="48" y="390" width="24" height="5" rx="1" fill="url(#goldGradient)"/>
+      <rect x="48" y="410" width="24" height="5" rx="1" fill="url(#goldGradient)"/>
+    </g>
+    
+    <!-- Pomello -->
+    <g id="pommel">
+      <circle cx="60" cy="460" r="25" fill="url(#pommelGradient)"/>
+      <circle cx="60" cy="460" r="18" fill="url(#goldGradient)"/>
+      <circle cx="60" cy="460" r="12" fill="url(#pommelGradient)"/>
+      
+      <!-- Ulteriori dettagli sul pomello -->
+      <circle cx="60" cy="460" r="6" fill="#bf953f"/>
+      <circle cx="60" cy="460" r="3" fill="#fcf6ba"/>
+      
+      <!-- Piccole croci sul pomello -->
+      <path d="M60,450 L60,470 M50,460 L70,460" stroke="#7c5c20" stroke-width="1"/>
+      
+      <!-- Piccola punta sotto al pomello -->
+      <path d="M53,482 L60,490 L67,482 Z" fill="url(#goldGradient)"/>
+    </g>
+  </g>
+  
+  <!-- Ombre -->
+  <ellipse cx="60" cy="495" rx="20" ry="5" fill="#000000" opacity="0.2"/>
+  
+  <!-- Bagliore della spada -->
+  <g filter="url(#swordGlow)">
+    <path d="M60,0 L70,100 L70,305 L60,310 L50,305 L50,100 Z" fill="#ffffff" opacity="0.1"/>
+  </g>
+</svg>

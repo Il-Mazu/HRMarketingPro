@@ -90,25 +90,17 @@ const ScrollSword = ({ mainTitleId }: ScrollSwordProps) => {
   
   return (
     <div className="absolute z-10 w-full h-full flex justify-center items-center pointer-events-none">
-      <div className="relative">
-        {/* Ombra della spada per effetto maggiore */}
-        <div className="absolute inset-0 blur-md opacity-50 scale-110" style={{ filter: 'drop-shadow(0 0 10px rgba(191, 155, 48, 0.8))' }}>
-          <img 
-            className="w-full h-full"
-            src="/images/medieval-sword.svg"
-            alt="" 
-          />
-        </div>
-        
-        {/* Spada principale */}
-        <img 
-          ref={swordRef}
-          className="w-1/3 md:w-1/4 lg:w-1/5 relative z-10 filter drop-shadow-lg"
-          src="/images/medieval-sword.svg"
-          alt="Spada medievale decorativa" 
-          style={{ filter: 'drop-shadow(0 0 5px rgba(255, 255, 255, 0.5))' }}
-        />
-      </div>
+      {/* Spada principale dettagliata con effetto glow */}
+      <img 
+        ref={swordRef}
+        className="w-1/3 md:w-1/4 lg:w-1/5 relative z-10"
+        src="/images/medieval-sword-detailed.svg"
+        alt="Spada medievale decorativa" 
+        style={{ 
+          filter: 'drop-shadow(0 0 3px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 6px rgba(191, 155, 48, 0.3))',
+          transform: 'rotate(-45deg)'
+        }}
+      />
     </div>
   );
 };
