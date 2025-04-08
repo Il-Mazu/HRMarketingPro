@@ -130,38 +130,53 @@ const TimelineItem = ({
   }, [index, imagePosition]);
   
   return (
-    <div ref={itemRef} className="timeline-item pb-8">
-      <h3 
-        ref={titleRef} 
-        className="font-medieval text-2xl md:text-3xl text-primary mb-4 tracking-wide"
-        style={{ opacity: 0 }}
+    <div ref={itemRef} className="timeline-item pb-14 mb-8 relative">
+      <div className="bg-gradient-to-br from-primary/95 to-primary/90 rounded-lg overflow-hidden shadow-2xl border-2 border-secondary/30 hover:shadow-2xl transition-all duration-300 hover:translate-y-[-4px]"
+        style={{
+          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.2), inset 0 0 15px rgba(210, 147, 38, 0.15)',
+        }}
       >
-        {title}
-      </h3>
-      
-      <div className={`flex flex-col ${imagePosition === "left" ? "md:flex-row-reverse" : "md:flex-row"} gap-6 md:gap-8 items-center`}>
-        <div className="md:w-2/3">
-          <p 
-            ref={textRef}
-            className="text-charcoal leading-relaxed"
-            style={{ opacity: 0 }}
-          >
-            {description}
-          </p>
-        </div>
-        <div className="md:w-1/3 flex justify-center items-start">
-          <img 
-            ref={imageRef}
-            src={imageSrc} 
-            alt={imageAlt} 
-            className="rounded-md shadow-xl w-full h-48 object-cover border border-secondary/20 transition-transform duration-300 cursor-pointer"
-            style={{ opacity: 0 }}
-          />
+        <h3 
+          ref={titleRef} 
+          className="font-medieval text-2xl md:text-3xl text-secondary mb-4 tracking-wide p-4 border-b border-secondary/30 bg-primary/80"
+          style={{ 
+            opacity: 0,
+            boxShadow: '0 2px 10px rgba(0, 0, 0, 0.15)'
+          }}
+        >
+          {title}
+        </h3>
+        
+        <div className={`flex flex-col ${imagePosition === "left" ? "md:flex-row-reverse" : "md:flex-row"} gap-6 md:gap-8 items-start p-6`}>
+          <div className="md:w-2/3">
+            <p 
+              ref={textRef}
+              className="text-foreground/90 leading-relaxed"
+              style={{ opacity: 0 }}
+            >
+              {description}
+            </p>
+          </div>
+          <div className="md:w-1/3 flex justify-center items-start">
+            <img 
+              ref={imageRef}
+              src={imageSrc} 
+              alt={imageAlt} 
+              className="rounded-md shadow-xl w-full h-56 object-cover border-2 border-secondary/30 transition-transform duration-300 cursor-pointer hover:scale-[1.02]"
+              style={{ 
+                opacity: 0,
+                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.25)' 
+              }}
+            />
+          </div>
         </div>
       </div>
       
-      {/* Timeline dot with pulse animation */}
-      <div className="timeline-marker absolute left-0 w-6 h-6 rounded-full bg-secondary border-4 border-primary shadow-glow animate-pulse-subtle"></div>
+      {/* Timeline dot with enhanced glow animation */}
+      <div className="timeline-marker absolute left-0 top-8 w-6 h-6 rounded-full bg-secondary border-4 border-primary shadow-glow animate-pulse-subtle"></div>
+      
+      {/* Timeline luminous line */}
+      <div className="absolute left-0 top-8 bottom-0 w-1 bg-gradient-to-b from-secondary/80 via-secondary/40 to-secondary/10"></div>
     </div>
   );
 };

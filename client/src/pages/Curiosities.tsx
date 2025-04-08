@@ -130,10 +130,7 @@ const Curiosities = () => {
       <section className="py-16 bg-charcoal/80">
         <div className="container mx-auto px-4">
           <div className="max-w-5xl mx-auto pl-8 relative">
-            {/* Timeline line */}
-            <div className="absolute left-0 top-0 bottom-0 w-1 bg-secondary/50"></div>
-            
-            {/* Timeline Items con design originale migliorato */}
+            {/* Timeline Items con design moderno */}
             {medievalFacts.map((fact, index) => (
               <TimelineItem
                 key={index}
@@ -151,9 +148,10 @@ const Curiosities = () => {
           <div className="text-center mt-16">
             <Link 
               href="/"
-              className="inline-block px-8 py-4 bg-primary text-foreground border-2 border-secondary hover:bg-primary/80 transition-all duration-300 font-medieval text-lg tracking-wide"
+              className="group inline-block px-8 py-4 bg-secondary text-secondary-foreground border-2 border-secondary/80 hover:bg-secondary/90 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95 overflow-hidden"
             >
-              Torna all'Inizio
+              <span className="relative z-10">Torna all'Inizio</span>
+              <span className="absolute inset-0 bg-primary/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
             </Link>
           </div>
         </div>

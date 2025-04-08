@@ -236,40 +236,37 @@ const Home = () => {
           className="relative z-10 w-full"
         >
           <div className="max-w-5xl mx-auto px-6 pb-16">
-            {/* Nuovo rotolo di pergamena orizzontale */}
+            {/* Finestra moderna in stile medievale */}
             <div 
-              className="relative py-6 px-4 md:px-6 shadow-2xl scroll-reveal"
+              className="relative py-8 px-6 md:px-8 shadow-2xl scroll-reveal bg-gradient-to-b from-primary/90 to-primary/95 rounded-lg border-2 border-secondary/50"
               style={{
-                backgroundImage: 'url("/images/user/scroll-horizontal-new.jpg")',
-                backgroundSize: 'contain',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
+                backdropFilter: 'blur(4px)',
                 minHeight: '240px',
                 width: '100%',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 transform: 'translateZ(0)',
-                transition: 'transform 0.3s ease-out'
+                transition: 'transform 0.3s ease-out',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(210, 147, 38, 0.2)'
               }}
             >
-              {/* Contenuto della pergamena con animazione migliorata */}
+              {/* Contenuto del pannello con animazione migliorata */}
               <div 
                 ref={scrollContentRef} 
-                className="text-center py-3 px-4 md:px-10 max-w-4xl mx-auto"
+                className="text-center py-6 px-4 md:px-10 max-w-4xl mx-auto"
                 style={{
                   margin: '0 auto',
-                  width: '70%', 
-                  padding: '0 50px'
+                  width: '90%'
                 }}
               >
-                <h3 className="font-medieval text-3xl md:text-4xl text-primary mb-4 tracking-wider animate-fade-in">
+                <h3 className="font-medieval text-3xl md:text-4xl text-foreground mb-4 tracking-wider animate-fade-in">
                   <span className="text-secondary text-4xl md:text-5xl font-bold mr-1 animate-pop-in">M</span>ysterium 
                   <span className="text-secondary text-4xl md:text-5xl font-bold mx-1 animate-pop-in" style={{animationDelay: '0.2s'}}>M</span>edii 
                   <span className="text-secondary text-4xl md:text-5xl font-bold mx-1 animate-pop-in" style={{animationDelay: '0.4s'}}>A</span>evi
                 </h3>
                 
-                <p className="font-medieval text-xl md:text-2xl text-charcoal mb-8 max-w-3xl mx-auto animate-fade-in-slow">
+                <p className="font-medieval text-xl md:text-2xl text-foreground/90 mb-8 max-w-3xl mx-auto animate-fade-in-slow">
                   Viaggia nei segreti e nelle meraviglie dell'epoca medievale
                 </p>
                 
@@ -279,10 +276,10 @@ const Home = () => {
                     e.preventDefault();
                     document.getElementById("content")?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="group inline-block px-8 py-4 bg-primary text-foreground border-2 border-secondary hover:bg-primary/80 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95 overflow-hidden animate-bounce-subtle"
+                  className="group inline-block px-8 py-4 bg-secondary text-secondary-foreground border-2 border-secondary/80 hover:bg-secondary/90 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95 overflow-hidden"
                 >
                   <span className="relative z-10">Inizia il Viaggio</span>
-                  <span className="absolute inset-0 bg-secondary/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
+                  <span className="absolute inset-0 bg-primary/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
                 </Link>
               </div>
             </div>
@@ -294,12 +291,11 @@ const Home = () => {
       <section id="content" className="py-20 bg-charcoal/95">
         <div className="container mx-auto px-4">
           <div ref={contentRef} className="max-w-4xl mx-auto">
-            {/* Sezione sulla storia medievale con il design parchment originale */}
-            <div className="bg-scroll-color rounded-lg overflow-hidden shadow-2xl border border-secondary/20 mb-16 transform hover:scale-[1.01] transition-all duration-500"
+            {/* Sezione sulla storia medievale con design moderno */}
+            <div className="bg-gradient-to-br from-primary/95 to-primary/90 rounded-lg overflow-hidden shadow-2xl border-2 border-secondary/30 mb-16 transform hover:scale-[1.01] transition-all duration-500"
                 style={{
-                  backgroundImage: 'url("/images/parchment-texture.svg")',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
+                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(210, 147, 38, 0.15)',
+                  backdropFilter: 'blur(8px)'
                 }}
             >
               <div 
@@ -310,24 +306,24 @@ const Home = () => {
                   transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
                 }}
               >
-                <h2 className="font-title text-3xl md:text-4xl text-primary mb-6 text-center glow-text-subtle">Introduzione al Medioevo</h2>
+                <h2 className="font-title text-3xl md:text-4xl text-secondary mb-6 text-center glow-text-subtle">Introduzione al Medioevo</h2>
                 
-                <div className="medieval-divider mb-8 animate-expand"></div>
+                <div className="h-1 w-full bg-gradient-to-r from-secondary/30 via-secondary to-secondary/30 rounded-full mb-8 animate-expand"></div>
                 
-                <p className="medieval-initials text-charcoal mb-6 leading-relaxed">
+                <p className="first-letter:font-medieval first-letter:text-secondary first-letter:text-5xl first-letter:float-left first-letter:mr-2 first-letter:leading-[0.8] text-foreground mb-6 leading-relaxed">
                   Il Medioevo, periodo storico che abbraccia circa mille anni, dal 476 d.C. (caduta dell'Impero Romano d'Occidente) al 1492 (scoperta dell'America), è un'epoca ricca di contrasti, misteri e fascino. Spesso dipinto con toni cupi nei secoli successivi, che lo definirono "età di mezzo" tra la gloria dell'antichità classica e il rinnovamento rinascimentale, il Medioevo fu in realtà un periodo di grande fermento culturale, spirituale e sociale.
                 </p>
                 
-                <p className="text-charcoal mb-6 leading-relaxed reveal-text">
+                <p className="text-foreground/90 mb-6 leading-relaxed reveal-text">
                   In questi secoli nacquero le università, si svilupparono nuove tecnologie agricole, si costruirono le maestose cattedrali gotiche, e si posero le basi per la formazione degli stati nazionali europei. Fu un'epoca di profonda spiritualità, dove la fede permeava ogni aspetto della vita quotidiana, ma anche di notevoli progressi scientifici e filosofici.
                 </p>
                 
-                <blockquote className="border-l-4 border-primary pl-4 my-8 italic text-primary quote-animation">
+                <blockquote className="border-l-4 border-secondary pl-4 my-8 italic text-secondary quote-animation">
                   "Il Medioevo non era né così luminoso come lo dipingono i romantici, né così oscuro come lo descrivono gli illuministi."
-                  <footer className="text-right text-sm mt-2">— Umberto Eco</footer>
+                  <footer className="text-right text-sm mt-2 text-foreground/80">— Umberto Eco</footer>
                 </blockquote>
                 
-                <p className="text-charcoal leading-relaxed reveal-text-delayed">
+                <p className="text-foreground/90 leading-relaxed reveal-text-delayed">
                   Attraverso questo sito, ci immergeremo nelle curiosità, nelle stranezze e negli aspetti più affascinanti di questo periodo storico complesso, scoprendo come molte delle sue usanze, credenze e invenzioni continuino a influenzare il nostro mondo contemporaneo.
                 </p>
               </div>
@@ -342,15 +338,17 @@ const Home = () => {
               <div className="flex flex-col md:flex-row justify-center gap-6">
                 <Link 
                   href="/curiosities"
-                  className="inline-block px-8 py-4 bg-primary text-foreground border-2 border-secondary hover:bg-primary/80 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95"
+                  className="group inline-block px-8 py-4 bg-secondary text-secondary-foreground border-2 border-secondary/80 hover:bg-secondary/90 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95 overflow-hidden"
                 >
-                  Visita le Curiosità
+                  <span className="relative z-10">Visita le Curiosità</span>
+                  <span className="absolute inset-0 bg-primary/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
                 </Link>
                 <Link 
                   href="/chi-siamo"
-                  className="inline-block px-8 py-4 bg-charcoal text-foreground border-2 border-secondary hover:bg-charcoal/80 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95"
+                  className="group inline-block px-8 py-4 bg-primary text-foreground border-2 border-secondary/80 hover:bg-primary/90 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95 overflow-hidden"
                 >
-                  Chi Siamo
+                  <span className="relative z-10">Chi Siamo</span>
+                  <span className="absolute inset-0 bg-secondary/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
                 </Link>
               </div>
             </div>

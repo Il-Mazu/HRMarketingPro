@@ -332,27 +332,26 @@ const ChiSiamo = () => {
       <section className="py-16 bg-charcoal/80">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto mb-16 transform hover:scale-[1.01] transition-all duration-500">
-            <div className="bg-scroll-color rounded-lg overflow-hidden shadow-2xl border border-secondary/20"
+            <div className="bg-gradient-to-br from-primary/95 to-primary/90 rounded-lg overflow-hidden shadow-2xl border-2 border-secondary/30"
               style={{
-                backgroundImage: 'url("/images/parchment-texture.svg")',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
+                boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(210, 147, 38, 0.15)',
+                backdropFilter: 'blur(8px)'
               }}
             >
               <div className="p-8 md:p-12 story-reveal">
-                <h2 className="font-medieval text-3xl text-primary mb-6 text-center reveal-title">La Nostra Storia</h2>
+                <h2 className="font-medieval text-3xl text-secondary mb-6 text-center reveal-title">La Nostra Storia</h2>
                 
-                <div className="medieval-divider mb-8 animate-expand"></div>
+                <div className="h-1 w-full bg-gradient-to-r from-secondary/30 via-secondary to-secondary/30 rounded-full mb-8 animate-expand"></div>
                 
-                <p className="medieval-initials text-charcoal mb-6 leading-relaxed fade-in-text">
+                <p className="first-letter:font-medieval first-letter:text-secondary first-letter:text-5xl first-letter:float-left first-letter:mr-2 first-letter:leading-[0.8] text-foreground mb-6 leading-relaxed fade-in-text">
                   Siamo due amici uniti da una passione comune: il Medioevo in tutte le sue sfaccettature. La nostra amicizia è nata più di quindici anni fa durante una fiera del libro antico, quando entrambi ci siamo ritrovati a sfogliare la stessa copia di un raro testo sulle leggende medievali italiane.
                 </p>
                 
-                <p className="text-charcoal mb-6 leading-relaxed fade-in-text" style={{animationDelay: '0.2s'}}>
+                <p className="text-foreground/90 mb-6 leading-relaxed fade-in-text" style={{animationDelay: '0.2s'}}>
                   Da quel momento, abbiamo condiviso innumerevoli avventure: viaggi alla scoperta di castelli dimenticati, partecipazioni a festival medievali in costume, lunghe notti passate a discutere di storia e leggende. La nostra passione ci ha portato a fondare un club locale di appassionati di storia medievale e, più recentemente, a creare questo sito web.
                 </p>
                 
-                <p className="text-charcoal leading-relaxed fade-in-text" style={{animationDelay: '0.4s'}}>
+                <p className="text-foreground/90 leading-relaxed fade-in-text" style={{animationDelay: '0.4s'}}>
                   Attraverso questo progetto, vogliamo condividere con voi le curiosità, le stranezze e le meraviglie del Medioevo che abbiamo scoperto nel nostro percorso. Crediamo che questo periodo storico, spesso frainteso, abbia molto da insegnare al mondo contemporaneo e meriti di essere esplorato con occhi nuovi.
                 </p>
               </div>
@@ -365,33 +364,20 @@ const ChiSiamo = () => {
               La Linea del Tempo della Nostra Amicizia
             </h2>
             
-            <div ref={timelineRef} className="relative pl-6 border-l-2 border-secondary/50 mb-16">
+            <div ref={timelineRef} className="relative pl-6 mb-16">
+              {/* Luminous timeline line with gradient effect */}
+              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-secondary via-secondary/50 to-secondary/20"></div>
+              
               {friendshipTimeline.map((event, index) => (
                 <div key={index} className="relative mb-16">
-                  <div 
-                    className="relative mb-8"
-                    style={{
-                      backgroundImage: 'url("/images/user/scroll-horizontal-new.jpg")',
-                      backgroundSize: 'contain',
-                      backgroundPosition: 'center',
-                      backgroundRepeat: 'no-repeat',
-                      minHeight: '180px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}
-                  >
-                    <div className="py-4 px-8 max-w-3xl mx-auto" style={{width: "70%", margin: "0 auto", padding: "0 40px"}}>
-                      <TimelineItem
-                        title={event.title}
-                        description={event.description}
-                        imageSrc={event.imageSrc}
-                        imageAlt={event.imageAlt}
-                        imagePosition={event.imagePosition}
-                        index={index}
-                      />
-                    </div>
-                  </div>
+                  <TimelineItem
+                    title={event.title}
+                    description={event.description}
+                    imageSrc={event.imageSrc}
+                    imageAlt={event.imageAlt}
+                    imagePosition={event.imagePosition}
+                    index={index}
+                  />
                 </div>
               ))}
             </div>
@@ -401,14 +387,14 @@ const ChiSiamo = () => {
           <div className="text-center mt-16 cta-section">
             <Link 
               href="/curiosities"
-              className="inline-block px-8 py-4 bg-primary text-foreground border-2 border-secondary hover:bg-primary/80 transition-all duration-300 font-medieval text-lg tracking-wide mr-4 hover:scale-105 active:scale-95 group overflow-hidden"
+              className="group inline-block px-8 py-4 bg-secondary text-secondary-foreground border-2 border-secondary/80 hover:bg-secondary/90 transition-all duration-300 font-medieval text-lg tracking-wide mr-4 hover:scale-105 active:scale-95 overflow-hidden"
             >
               <span className="relative z-10">Esplora le Curiosità</span>
-              <span className="absolute inset-0 bg-secondary/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
+              <span className="absolute inset-0 bg-primary/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
             </Link>
             <Link 
               href="/"
-              className="inline-block px-8 py-4 bg-charcoal text-foreground border-2 border-secondary hover:bg-charcoal/80 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95 group overflow-hidden"
+              className="group inline-block px-8 py-4 bg-primary text-foreground border-2 border-secondary/80 hover:bg-primary/90 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95 overflow-hidden"
             >
               <span className="relative z-10">Torna all'Inizio</span>
               <span className="absolute inset-0 bg-secondary/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
