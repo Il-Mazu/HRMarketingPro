@@ -1,7 +1,11 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Link } from "wouter";
 import ScrollSword from "@/components/ScrollSword";
+
+// Assicuriamoci che ScrollTrigger sia registrato
+gsap.registerPlugin(ScrollTrigger);
 
 const Home = () => {
   const introTextRef = useRef<HTMLParagraphElement>(null);
@@ -45,9 +49,7 @@ const Home = () => {
     
     return () => {
       // Clean up ScrollTrigger instances
-      if (textBlock) {
-        gsap.getAll().forEach(animation => animation.kill());
-      }
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
   
@@ -115,12 +117,20 @@ const Home = () => {
           <p className="text-foreground max-w-2xl mx-auto mb-10 font-medieval text-lg">
             Scopri aneddoti affascinanti, pratiche insolite e stranezze del Medioevo che hanno plasmato la nostra storia.
           </p>
-          <Link 
-            href="/curiosities"
-            className="inline-block px-8 py-4 bg-primary text-foreground border-2 border-secondary hover:bg-primary/80 transition-all duration-300 font-medieval text-lg tracking-wide"
-          >
-            Visita le Curiosità
-          </Link>
+          <div className="flex flex-col md:flex-row justify-center gap-4">
+            <Link 
+              href="/curiosities"
+              className="inline-block px-8 py-4 bg-primary text-foreground border-2 border-secondary hover:bg-primary/80 transition-all duration-300 font-medieval text-lg tracking-wide"
+            >
+              Visita le Curiosità
+            </Link>
+            <Link 
+              href="/chi-siamo"
+              className="inline-block px-8 py-4 bg-charcoal text-foreground border-2 border-secondary hover:bg-charcoal/80 transition-all duration-300 font-medieval text-lg tracking-wide"
+            >
+              Chi Siamo
+            </Link>
+          </div>
         </div>
       </section>
     </div>

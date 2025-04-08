@@ -63,6 +63,14 @@ const Header = () => {
           >
             Curiosità
           </Link>
+          <Link 
+            href="/chi-siamo" 
+            className={`font-medieval transition-colors duration-300 ${
+              location === "/chi-siamo" ? "text-secondary" : "text-foreground hover:text-secondary"
+            }`}
+          >
+            Chi Siamo
+          </Link>
         </div>
         
         <button 
@@ -109,6 +117,15 @@ const Header = () => {
             onClick={closeMobileMenu}
           >
             Curiosità
+          </Link>
+          <Link 
+            href="/chi-siamo" 
+            className={`font-medieval text-center py-2 transition-colors duration-300 ${
+              location === "/chi-siamo" ? "text-secondary" : "text-foreground hover:text-secondary"
+            }`}
+            onClick={closeMobileMenu}
+          >
+            Chi Siamo
           </Link>
         </div>
       </div>

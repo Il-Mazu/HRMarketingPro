@@ -2,6 +2,9 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+// Assicuriamoci che ScrollTrigger sia registrato
+gsap.registerPlugin(ScrollTrigger);
+
 interface ScrollSwordProps {
   mainTitleId: string;
 }
