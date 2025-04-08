@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,8 +11,10 @@
   }
 
   :root {
-    --background: 0 0% 10%;
-    --foreground: 45 24% 98%;
+    --background: #1A1A1A;
+    --foreground: #F5F5F5;
+    --secondary: #D4AF37;
+    --charcoal: #2C2C2C;
     
     --card: 40 20% 98%;
     --card-foreground: 0 0% 12%;
@@ -19,9 +24,6 @@
     
     --primary: 0 56% 25%;
     --primary-foreground: 40 30% 98%;
-    
-    --secondary: 42 70% 55%;
-    --secondary-foreground: 0 0% 10%;
     
     --muted: 0 0% 45%;
     --muted-foreground: 0 0% 65%;
@@ -56,6 +58,7 @@
     background-size: 300px;
     background-position: center;
     background-blend-mode: overlay;
+    font-family: 'MedievalSharp', serif;
   }
   
   /* Glow effect for main title */
@@ -347,10 +350,26 @@
   }
 
   .bg-background {
-    background-color: hsl(var(--background));
+    background-color: var(--background);
   }
 
   .text-foreground {
-    color: hsl(var(--foreground));
+    color: var(--foreground);
+  }
+
+  .text-secondary {
+    color: var(--secondary);
+  }
+  
+  .border-secondary {
+    border-color: var(--secondary);
+  }
+  
+  .from-charcoal {
+    --tw-gradient-from: var(--charcoal);
+  }
+  
+  .to-charcoal {
+    --tw-gradient-to: var(--charcoal);
   }
 }

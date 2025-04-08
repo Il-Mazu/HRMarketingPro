@@ -1,4 +1,4 @@
-import { Route, Switch } from "wouter";
+import { Route, Switch, useLocation } from "wouter";
 import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
@@ -11,15 +11,21 @@ import ScrollToTop from "./components/ScrollToTop";
 import "./styles/cursor.css";
 
 function Router() {
+  const [location] = useLocation();
+  
+  // Aggiungiamo un prefisso per GitHub Pages
+  const basePath = '/HRMarketingPro';
+  const currentPath = location.startsWith(basePath) ? location : `${basePath}${location}`;
+
   return (
     <>
       <Header />
       <ScrollToTop />
       <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/introduzione" component={Introduzione} />
-        <Route path="/curiosita" component={Curiosities} />
-        <Route path="/chi-siamo" component={ChiSiamo} />
+        <Route path={`${basePath}/`} component={Home} />
+        <Route path={`${basePath}/introduzione`} component={Introduzione} />
+        <Route path={`${basePath}/curiosita`} component={Curiosities} />
+        <Route path={`${basePath}/chi-siamo`} component={ChiSiamo} />
         <Route component={NotFound} />
       </Switch>
       <Footer />

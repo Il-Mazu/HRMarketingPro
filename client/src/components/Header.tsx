@@ -23,6 +23,10 @@ const Header = () => {
     setMobileMenuOpen(false);
   };
 
+  // Aggiungiamo il prefisso per GitHub Pages
+  const basePath = '/HRMarketingPro';
+  const getPath = (path: string) => `${basePath}${path}`;
+
   return (
     <nav 
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -32,7 +36,7 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="flex items-center group">
+        <Link href={getPath("/")} className="flex items-center group">
           <div className="relative">
             <span className="text-secondary font-title text-3xl tracking-wider group-hover:text-foreground transition-colors duration-300">
               Mysterium
@@ -43,40 +47,40 @@ const Header = () => {
         
         <div className="hidden md:flex space-x-10">
           <Link 
-            href="/" 
+            href={getPath("/")} 
             className={`font-medieval relative transition-colors duration-300 group ${
-              location === "/" ? "text-secondary" : "text-foreground hover:text-secondary"
+              location === getPath("/") ? "text-secondary" : "text-foreground hover:text-secondary"
             }`}
           >
             <span>Home</span>
-            <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === "/" ? "w-full" : ""}`}></span>
+            <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === getPath("/") ? "w-full" : ""}`}></span>
           </Link>
           <Link 
-            href="/introduzione" 
+            href={getPath("/introduzione")} 
             className={`font-medieval relative transition-colors duration-300 group ${
-              location === "/introduzione" ? "text-secondary" : "text-foreground hover:text-secondary"
+              location === getPath("/introduzione") ? "text-secondary" : "text-foreground hover:text-secondary"
             }`}
           >
             <span>Introduzione</span>
-            <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === "/introduzione" ? "w-full" : ""}`}></span>
+            <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === getPath("/introduzione") ? "w-full" : ""}`}></span>
           </Link>
           <Link 
-            href="/curiosita" 
+            href={getPath("/curiosita")} 
             className={`font-medieval relative transition-colors duration-300 group ${
-              location === "/curiosita" ? "text-secondary" : "text-foreground hover:text-secondary"
+              location === getPath("/curiosita") ? "text-secondary" : "text-foreground hover:text-secondary"
             }`}
           >
             <span>Curiosità</span>
-            <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === "/curiosita" ? "w-full" : ""}`}></span>
+            <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === getPath("/curiosita") ? "w-full" : ""}`}></span>
           </Link>
           <Link 
-            href="/chi-siamo" 
+            href={getPath("/chi-siamo")} 
             className={`font-medieval relative transition-colors duration-300 group ${
-              location === "/chi-siamo" ? "text-secondary" : "text-foreground hover:text-secondary"
+              location === getPath("/chi-siamo") ? "text-secondary" : "text-foreground hover:text-secondary"
             }`}
           >
             <span>Chi Siamo</span>
-            <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === "/chi-siamo" ? "w-full" : ""}`}></span>
+            <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === getPath("/chi-siamo") ? "w-full" : ""}`}></span>
           </Link>
         </div>
         
@@ -96,44 +100,44 @@ const Header = () => {
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col space-y-6">
             <Link 
-              href="/" 
+              href={getPath("/")} 
               className={`font-medieval text-2xl relative transition-colors duration-300 group ${
-                location === "/" ? "text-secondary" : "text-foreground hover:text-secondary"
+                location === getPath("/") ? "text-secondary" : "text-foreground hover:text-secondary"
               }`}
               onClick={closeMobileMenu}
             >
               <span>Home</span>
-              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === "/" ? "w-full" : ""}`}></span>
+              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === getPath("/") ? "w-full" : ""}`}></span>
             </Link>
             <Link 
-              href="/introduzione" 
+              href={getPath("/introduzione")} 
               className={`font-medieval text-2xl relative transition-colors duration-300 group ${
-                location === "/introduzione" ? "text-secondary" : "text-foreground hover:text-secondary"
+                location === getPath("/introduzione") ? "text-secondary" : "text-foreground hover:text-secondary"
               }`}
               onClick={closeMobileMenu}
             >
               <span>Introduzione</span>
-              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === "/introduzione" ? "w-full" : ""}`}></span>
+              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === getPath("/introduzione") ? "w-full" : ""}`}></span>
             </Link>
             <Link 
-              href="/curiosita" 
+              href={getPath("/curiosita")} 
               className={`font-medieval text-2xl relative transition-colors duration-300 group ${
-                location === "/curiosita" ? "text-secondary" : "text-foreground hover:text-secondary"
+                location === getPath("/curiosita") ? "text-secondary" : "text-foreground hover:text-secondary"
               }`}
               onClick={closeMobileMenu}
             >
               <span>Curiosità</span>
-              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === "/curiosita" ? "w-full" : ""}`}></span>
+              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === getPath("/curiosita") ? "w-full" : ""}`}></span>
             </Link>
             <Link 
-              href="/chi-siamo" 
+              href={getPath("/chi-siamo")} 
               className={`font-medieval text-2xl relative transition-colors duration-300 group ${
-                location === "/chi-siamo" ? "text-secondary" : "text-foreground hover:text-secondary"
+                location === getPath("/chi-siamo") ? "text-secondary" : "text-foreground hover:text-secondary"
               }`}
               onClick={closeMobileMenu}
             >
               <span>Chi Siamo</span>
-              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === "/chi-siamo" ? "w-full" : ""}`}></span>
+              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === getPath("/chi-siamo") ? "w-full" : ""}`}></span>
             </Link>
           </div>
         </div>
