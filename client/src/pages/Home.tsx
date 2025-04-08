@@ -122,15 +122,16 @@ const Home = () => {
         <div 
           className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url("/images/knight-with-scroll.svg")',
+            backgroundImage: 'url("/images/user/knight-castle-background.jpg")',
             backgroundSize: 'cover',
+            backgroundPosition: 'center',
           }}
         >
           {/* Overlay scuro con vignette */}
           <div 
-            className="absolute inset-0 bg-black/30"
+            className="absolute inset-0 bg-black/20"
             style={{
-              background: 'radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 70%, rgba(0,0,0,0.7) 100%)',
+              background: 'radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.6) 100%)',
             }}
           ></div>
         </div>
@@ -161,21 +162,22 @@ const Home = () => {
           className="relative z-10 w-full"
         >
           <div className="max-w-5xl mx-auto px-6 pb-16">
-            {/* Sfondo pergamena */}
+            {/* Sfondo pergamena orizzontale con immagine real */}
             <div 
-              className="relative bg-scroll-color rounded-t-3xl py-8 px-8 md:px-12 border-t-4 border-x-4 border-scroll-edge shadow-2xl"
+              className="relative py-8 px-8 md:px-12 shadow-2xl"
               style={{
-                backgroundImage: 'url("/images/parchment-texture.svg")',
-                backgroundSize: 'cover',
+                backgroundImage: 'url("/images/user/horizontal-scroll.png")',
+                backgroundSize: 'contain',
                 backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                minHeight: '180px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}
             >
-              {/* Bordi decorativi della pergamena */}
-              <div className="absolute left-0 top-0 w-12 h-12 border-l-4 border-t-4 border-primary/30 rounded-tl-3xl"></div>
-              <div className="absolute right-0 top-0 w-12 h-12 border-r-4 border-t-4 border-primary/30 rounded-tr-3xl"></div>
-              
               {/* Contenuto della pergamena */}
-              <div ref={scrollContentRef} className="text-center">
+              <div ref={scrollContentRef} className="text-center py-3 px-10 max-w-4xl mx-auto">
                 <h3 className="font-medieval text-3xl md:text-4xl text-primary mb-4 tracking-wider">
                   <span className="text-secondary text-4xl md:text-5xl font-bold mr-1">M</span>ysterium <span className="text-secondary text-4xl md:text-5xl font-bold mr-1">M</span>edii <span className="text-secondary text-4xl md:text-5xl font-bold mr-1">A</span>evi
                 </h3>
@@ -205,15 +207,21 @@ const Home = () => {
       <section id="content" className="py-20 bg-charcoal/95">
         <div className="container mx-auto px-4">
           <div ref={contentRef} className="max-w-4xl mx-auto">
-            {/* Sezione sulla storia medievale */}
-            <div className="bg-scroll-color rounded-lg overflow-hidden shadow-2xl border border-secondary/20 mb-16"
+            {/* Sezione sulla storia medievale con pergamena verticale */}
+            <div className="relative overflow-hidden shadow-2xl mb-16 mx-auto"
                 style={{
-                  backgroundImage: 'url("/images/parchment-texture.svg")',
-                  backgroundSize: 'cover',
+                  backgroundImage: 'url("/images/user/vertical-scroll.png")',
+                  backgroundSize: 'contain',
                   backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                  maxWidth: '800px',
+                  minHeight: '700px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center'
                 }}
             >
-              <div className="p-8 md:p-12">
+              <div className="p-8 md:p-12 mt-16 max-w-2xl mx-auto">
                 <h2 className="font-title text-3xl md:text-4xl text-primary mb-6 text-center">Introduzione al Medioevo</h2>
                 
                 <div className="medieval-divider mb-8"></div>

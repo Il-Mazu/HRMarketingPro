@@ -133,17 +133,34 @@ const Curiosities = () => {
             {/* Timeline line */}
             <div className="absolute left-0 top-0 bottom-0 w-1 bg-secondary/50"></div>
             
-            {/* Timeline Items */}
+            {/* Timeline Items con pergamena per ogni elemento */}
             {medievalFacts.map((fact, index) => (
-              <TimelineItem
-                key={index}
-                title={fact.title}
-                description={fact.description}
-                imageSrc={fact.imageSrc}
-                imageAlt={fact.imageAlt}
-                imagePosition={fact.imagePosition as "left" | "right"}
-                index={index}
-              />
+              <div key={index} className="relative mb-20">
+                <div 
+                  className="relative mb-8"
+                  style={{
+                    backgroundImage: 'url("/images/user/vertical-scroll.png")',
+                    backgroundSize: 'contain',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    minHeight: '600px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                >
+                  <div className="p-8 pt-16 max-w-2xl mx-auto">
+                    <TimelineItem
+                      title={fact.title}
+                      description={fact.description}
+                      imageSrc={fact.imageSrc}
+                      imageAlt={fact.imageAlt}
+                      imagePosition={fact.imagePosition as "left" | "right"}
+                      index={index}
+                    />
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
           

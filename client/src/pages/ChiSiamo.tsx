@@ -171,23 +171,37 @@ const ChiSiamo = () => {
       {/* About Us Content */}
       <section className="py-16 bg-charcoal/80">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto rounded-lg overflow-hidden shadow-2xl mb-16 transform hover:scale-[1.01] transition-all duration-500">
-            <div className="p-8 md:p-12 parchment">
-              <h2 className="font-medieval text-3xl text-primary mb-6 text-center">La Nostra Storia</h2>
-              
-              <div className="medieval-divider mb-8"></div>
-              
-              <p className="medieval-initials text-charcoal mb-6 leading-relaxed">
-                Siamo due amici uniti da una passione comune: il Medioevo in tutte le sue sfaccettature. La nostra amicizia è nata più di quindici anni fa durante una fiera del libro antico, quando entrambi ci siamo ritrovati a sfogliare la stessa copia di un raro testo sulle leggende medievali italiane.
-              </p>
-              
-              <p className="text-charcoal mb-6 leading-relaxed">
-                Da quel momento, abbiamo condiviso innumerevoli avventure: viaggi alla scoperta di castelli dimenticati, partecipazioni a festival medievali in costume, lunghe notti passate a discutere di storia e leggende. La nostra passione ci ha portato a fondare un club locale di appassionati di storia medievale e, più recentemente, a creare questo sito web.
-              </p>
-              
-              <p className="text-charcoal leading-relaxed">
-                Attraverso questo progetto, vogliamo condividere con voi le curiosità, le stranezze e le meraviglie del Medioevo che abbiamo scoperto nel nostro percorso. Crediamo che questo periodo storico, spesso frainteso, abbia molto da insegnare al mondo contemporaneo e meriti di essere esplorato con occhi nuovi.
-              </p>
+          <div className="max-w-4xl mx-auto mb-16 transform hover:scale-[1.01] transition-all duration-500">
+            <div 
+              className="relative overflow-hidden shadow-2xl"
+              style={{
+                backgroundImage: 'url("/images/user/vertical-scroll.png")',
+                backgroundSize: 'contain',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                minHeight: '700px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              <div className="p-8 md:p-12 mt-16 max-w-2xl mx-auto">
+                <h2 className="font-medieval text-3xl text-primary mb-6 text-center">La Nostra Storia</h2>
+                
+                <div className="medieval-divider mb-8"></div>
+                
+                <p className="medieval-initials text-charcoal mb-6 leading-relaxed">
+                  Siamo due amici uniti da una passione comune: il Medioevo in tutte le sue sfaccettature. La nostra amicizia è nata più di quindici anni fa durante una fiera del libro antico, quando entrambi ci siamo ritrovati a sfogliare la stessa copia di un raro testo sulle leggende medievali italiane.
+                </p>
+                
+                <p className="text-charcoal mb-6 leading-relaxed">
+                  Da quel momento, abbiamo condiviso innumerevoli avventure: viaggi alla scoperta di castelli dimenticati, partecipazioni a festival medievali in costume, lunghe notti passate a discutere di storia e leggende. La nostra passione ci ha portato a fondare un club locale di appassionati di storia medievale e, più recentemente, a creare questo sito web.
+                </p>
+                
+                <p className="text-charcoal leading-relaxed">
+                  Attraverso questo progetto, vogliamo condividere con voi le curiosità, le stranezze e le meraviglie del Medioevo che abbiamo scoperto nel nostro percorso. Crediamo che questo periodo storico, spesso frainteso, abbia molto da insegnare al mondo contemporaneo e meriti di essere esplorato con occhi nuovi.
+                </p>
+              </div>
             </div>
           </div>
           
@@ -199,15 +213,32 @@ const ChiSiamo = () => {
             
             <div ref={timelineRef} className="relative pl-6 border-l-2 border-secondary/50 mb-16">
               {friendshipTimeline.map((event, index) => (
-                <TimelineItem
-                  key={index}
-                  title={event.title}
-                  description={event.description}
-                  imageSrc={event.imageSrc}
-                  imageAlt={event.imageAlt}
-                  imagePosition={event.imagePosition}
-                  index={index}
-                />
+                <div key={index} className="relative mb-16">
+                  <div 
+                    className="relative mb-8"
+                    style={{
+                      backgroundImage: 'url("/images/user/horizontal-scroll.png")',
+                      backgroundSize: 'contain',
+                      backgroundPosition: 'center',
+                      backgroundRepeat: 'no-repeat',
+                      minHeight: '180px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <div className="py-4 px-8 max-w-3xl mx-auto">
+                      <TimelineItem
+                        title={event.title}
+                        description={event.description}
+                        imageSrc={event.imageSrc}
+                        imageAlt={event.imageAlt}
+                        imagePosition={event.imagePosition}
+                        index={index}
+                      />
+                    </div>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
