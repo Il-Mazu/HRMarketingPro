@@ -14,59 +14,68 @@ const Home = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    // Animazioni di entrata
+    // Animazioni di entrata migliorate
     const timeline = gsap.timeline({
       defaults: {
         ease: "power3.out"
       }
     });
     
-    // Animazione del titolo
+    // Animazione del titolo con effetto di apparizione drammatico
     if (titleRef.current) {
       timeline.fromTo(
         titleRef.current,
         { 
           opacity: 0, 
-          y: -30 
+          y: -30,
+          scale: 0.9,
+          textShadow: "0 0 0 rgba(0,0,0,0)"
         },
         { 
           opacity: 1, 
           y: 0, 
+          scale: 1,
+          textShadow: "0 0 20px rgba(210, 147, 38, 0.4), 0 0 40px rgba(210, 147, 38, 0.2)",
           duration: 1.2
         },
         0
       );
     }
     
-    // Animazione del sottotitolo
+    // Animazione del sottotitolo con effetto di spaziatura lettere
     if (subtitleRef.current) {
       timeline.fromTo(
         subtitleRef.current,
         { 
           opacity: 0, 
-          y: 20 
+          y: 20,
+          letterSpacing: "0em"
         },
         { 
           opacity: 1, 
           y: 0, 
-          duration: 1
+          letterSpacing: "0.05em",
+          duration: 1.2
         },
         0.4
       );
     }
     
-    // Animazione della pergamena
+    // Animazione della pergamena con effetto elastico
     if (scrollRef.current) {
       timeline.fromTo(
         scrollRef.current,
         { 
           opacity: 0,
-          y: 100
+          y: 100,
+          scale: 0.8
         },
         { 
           opacity: 1, 
           y: 0, 
-          duration: 1.5
+          scale: 1,
+          duration: 1.5,
+          ease: "elastic.out(1, 0.5)"
         },
         0.7
       );
@@ -85,32 +94,95 @@ const Home = () => {
         },
         1.2
       );
+      
+      // Animazione di rotazione sottile della pergamena all'hover
+      scrollRef.current?.addEventListener('mouseenter', () => {
+        gsap.to(scrollRef.current, {
+          rotation: 0.5,
+          scale: 1.02,
+          duration: 0.5,
+          ease: "power2.out"
+        });
+      });
+      
+      scrollRef.current?.addEventListener('mouseleave', () => {
+        gsap.to(scrollRef.current, {
+          rotation: 0,
+          scale: 1,
+          duration: 0.5,
+          ease: "power2.out"
+        });
+      });
     }
     
-    // Animazione del contenuto principale quando viene raggiunto
-    if (contentRef.current) {
-      gsap.fromTo(
-        contentRef.current,
-        { 
-          opacity: 0, 
-          y: 40 
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.2,
-          scrollTrigger: {
-            trigger: contentRef.current,
-            start: "top 70%",
-            toggleActions: "play none none none"
-          }
+    // Observer per rivelare elementi quando sono visibili
+    const contentElements = document.querySelectorAll('.content-reveal');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
         }
-      );
+      });
+    }, { threshold: 0.1 });
+    
+    contentElements.forEach(element => {
+      observer.observe(element);
+    });
+    
+    // Animazione avanzata del contenuto principale quando viene raggiunto
+    if (contentRef.current) {
+      const contentTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: contentRef.current,
+          start: "top 70%",
+          toggleActions: "play none none none"
+        }
+      });
+      
+      contentTl
+        .fromTo(
+          contentRef.current,
+          { 
+            opacity: 0, 
+            y: 40 
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power2.out"
+          }
+        )
+        .fromTo(
+          '.medieval-divider',
+          {
+            width: 0,
+            opacity: 0.5
+          },
+          {
+            width: '100%',
+            opacity: 1,
+            duration: 1,
+            ease: "power2.inOut"
+          },
+          "-=0.5"
+        );
     }
     
     return () => {
-      // Pulizia delle istanze ScrollTrigger
+      // Pulizia delle istanze ScrollTrigger e observer
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      
+      contentElements.forEach(element => {
+        observer.unobserve(element);
+      });
+      
+      // Rimuovere event listener
+      if (scrollRef.current) {
+        scrollRef.current.removeEventListener('mouseenter', () => {});
+        scrollRef.current.removeEventListener('mouseleave', () => {});
+      }
     };
   }, []);
   
@@ -118,20 +190,22 @@ const Home = () => {
     <div className="min-h-screen relative">
       {/* Hero section con sfondo a schermo intero */}
       <section className="relative min-h-screen flex flex-col justify-between overflow-hidden">
-        {/* Background con cavaliere e castello */}
+        {/* Background con cavaliere e castello - immagine aggiornata */}
         <div 
           className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url("/images/user/knight-castle-background.jpg")',
+            backgroundImage: 'url("/images/user/knight-castle-new.jpg")',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
+            backgroundAttachment: 'fixed'
           }}
         >
-          {/* Overlay scuro con vignette */}
+          {/* Overlay scuro con vignette migliorato */}
           <div 
-            className="absolute inset-0 bg-black/20"
+            className="absolute inset-0"
             style={{
-              background: 'radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0.6) 100%)',
+              background: 'radial-gradient(circle at center, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.5) 100%)',
+              boxShadow: 'inset 0 0 100px rgba(0,0,0,0.8)'
             }}
           ></div>
         </div>
@@ -162,27 +236,40 @@ const Home = () => {
           className="relative z-10 w-full"
         >
           <div className="max-w-5xl mx-auto px-6 pb-16">
-            {/* Sfondo pergamena orizzontale con immagine real */}
+            {/* Nuovo rotolo di pergamena orizzontale */}
             <div 
-              className="relative py-8 px-8 md:px-12 shadow-2xl"
+              className="relative py-6 px-4 md:px-6 shadow-2xl scroll-reveal"
               style={{
-                backgroundImage: 'url("/images/user/horizontal-scroll.png")',
+                backgroundImage: 'url("/images/user/scroll-horizontal-new.jpg")',
                 backgroundSize: 'contain',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
-                minHeight: '180px',
+                minHeight: '240px',
+                width: '100%',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                transform: 'translateZ(0)',
+                transition: 'transform 0.3s ease-out'
               }}
             >
-              {/* Contenuto della pergamena */}
-              <div ref={scrollContentRef} className="text-center py-3 px-10 max-w-4xl mx-auto">
-                <h3 className="font-medieval text-3xl md:text-4xl text-primary mb-4 tracking-wider">
-                  <span className="text-secondary text-4xl md:text-5xl font-bold mr-1">M</span>ysterium <span className="text-secondary text-4xl md:text-5xl font-bold mr-1">M</span>edii <span className="text-secondary text-4xl md:text-5xl font-bold mr-1">A</span>evi
+              {/* Contenuto della pergamena con animazione migliorata */}
+              <div 
+                ref={scrollContentRef} 
+                className="text-center py-3 px-4 md:px-10 max-w-4xl mx-auto"
+                style={{
+                  margin: '0 auto',
+                  width: '70%', 
+                  padding: '0 50px'
+                }}
+              >
+                <h3 className="font-medieval text-3xl md:text-4xl text-primary mb-4 tracking-wider animate-fade-in">
+                  <span className="text-secondary text-4xl md:text-5xl font-bold mr-1 animate-pop-in">M</span>ysterium 
+                  <span className="text-secondary text-4xl md:text-5xl font-bold mx-1 animate-pop-in" style={{animationDelay: '0.2s'}}>M</span>edii 
+                  <span className="text-secondary text-4xl md:text-5xl font-bold mx-1 animate-pop-in" style={{animationDelay: '0.4s'}}>A</span>evi
                 </h3>
                 
-                <p className="font-medieval text-xl md:text-2xl text-charcoal mb-8 max-w-3xl mx-auto">
+                <p className="font-medieval text-xl md:text-2xl text-charcoal mb-8 max-w-3xl mx-auto animate-fade-in-slow">
                   Viaggia nei segreti e nelle meraviglie dell'epoca medievale
                 </p>
                 
@@ -192,7 +279,7 @@ const Home = () => {
                     e.preventDefault();
                     document.getElementById("content")?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="group inline-block px-8 py-4 bg-primary text-foreground border-2 border-secondary hover:bg-primary/80 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95 overflow-hidden"
+                  className="group inline-block px-8 py-4 bg-primary text-foreground border-2 border-secondary hover:bg-primary/80 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95 overflow-hidden animate-bounce-subtle"
                 >
                   <span className="relative z-10">Inizia il Viaggio</span>
                   <span className="absolute inset-0 bg-secondary/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
@@ -207,39 +294,40 @@ const Home = () => {
       <section id="content" className="py-20 bg-charcoal/95">
         <div className="container mx-auto px-4">
           <div ref={contentRef} className="max-w-4xl mx-auto">
-            {/* Sezione sulla storia medievale con pergamena verticale */}
-            <div className="relative overflow-hidden shadow-2xl mb-16 mx-auto"
+            {/* Sezione sulla storia medievale con il design parchment originale */}
+            <div className="bg-scroll-color rounded-lg overflow-hidden shadow-2xl border border-secondary/20 mb-16 transform hover:scale-[1.01] transition-all duration-500"
                 style={{
-                  backgroundImage: 'url("/images/user/vertical-scroll.png")',
-                  backgroundSize: 'contain',
+                  backgroundImage: 'url("/images/parchment-texture.svg")',
+                  backgroundSize: 'cover',
                   backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                  maxWidth: '800px',
-                  minHeight: '700px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
                 }}
             >
-              <div className="p-8 md:p-12 mt-16 max-w-2xl mx-auto">
-                <h2 className="font-title text-3xl md:text-4xl text-primary mb-6 text-center">Introduzione al Medioevo</h2>
+              <div 
+                className="p-8 md:p-12 content-reveal"
+                style={{
+                  opacity: 0,
+                  transform: 'translateY(20px)',
+                  transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
+                }}
+              >
+                <h2 className="font-title text-3xl md:text-4xl text-primary mb-6 text-center glow-text-subtle">Introduzione al Medioevo</h2>
                 
-                <div className="medieval-divider mb-8"></div>
+                <div className="medieval-divider mb-8 animate-expand"></div>
                 
                 <p className="medieval-initials text-charcoal mb-6 leading-relaxed">
                   Il Medioevo, periodo storico che abbraccia circa mille anni, dal 476 d.C. (caduta dell'Impero Romano d'Occidente) al 1492 (scoperta dell'America), è un'epoca ricca di contrasti, misteri e fascino. Spesso dipinto con toni cupi nei secoli successivi, che lo definirono "età di mezzo" tra la gloria dell'antichità classica e il rinnovamento rinascimentale, il Medioevo fu in realtà un periodo di grande fermento culturale, spirituale e sociale.
                 </p>
                 
-                <p className="text-charcoal mb-6 leading-relaxed">
+                <p className="text-charcoal mb-6 leading-relaxed reveal-text">
                   In questi secoli nacquero le università, si svilupparono nuove tecnologie agricole, si costruirono le maestose cattedrali gotiche, e si posero le basi per la formazione degli stati nazionali europei. Fu un'epoca di profonda spiritualità, dove la fede permeava ogni aspetto della vita quotidiana, ma anche di notevoli progressi scientifici e filosofici.
                 </p>
                 
-                <blockquote className="border-l-4 border-primary pl-4 my-8 italic text-primary">
+                <blockquote className="border-l-4 border-primary pl-4 my-8 italic text-primary quote-animation">
                   "Il Medioevo non era né così luminoso come lo dipingono i romantici, né così oscuro come lo descrivono gli illuministi."
                   <footer className="text-right text-sm mt-2">— Umberto Eco</footer>
                 </blockquote>
                 
-                <p className="text-charcoal leading-relaxed">
+                <p className="text-charcoal leading-relaxed reveal-text-delayed">
                   Attraverso questo sito, ci immergeremo nelle curiosità, nelle stranezze e negli aspetti più affascinanti di questo periodo storico complesso, scoprendo come molte delle sue usanze, credenze e invenzioni continuino a influenzare il nostro mondo contemporaneo.
                 </p>
               </div>
