@@ -239,7 +239,7 @@ const Home = () => {
           <div className="max-w-5xl mx-auto px-6 pb-16">
             {/* Finestra moderna in stile medievale */}
             <div 
-              className="relative py-8 px-6 md:px-8 shadow-2xl scroll-reveal bg-gradient-to-b from-primary/90 to-primary/95 rounded-lg border-2 border-secondary/50"
+              className="relative py-8 px-6 md:px-8 shadow-2xl scroll-reveal bg-charcoal rounded-lg border-2 border-secondary/50"
               style={{
                 backdropFilter: 'blur(4px)',
                 minHeight: '240px',
@@ -249,6 +249,7 @@ const Home = () => {
                 justifyContent: 'center',
                 transform: 'translateZ(0)',
                 transition: 'transform 0.3s ease-out',
+                backgroundColor: 'rgba(20, 20, 20, 0.9)',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(210, 147, 38, 0.2)'
               }}
             >
@@ -272,10 +273,10 @@ const Home = () => {
                 </p>
                 
                 <Link 
-                  href="#content"
+                  href="#introduzione"
                   onClick={(e) => {
                     e.preventDefault();
-                    document.getElementById("content")?.scrollIntoView({ behavior: "smooth" });
+                    document.getElementById("introduzione")?.scrollIntoView({ behavior: "smooth" });
                   }}
                   className="group inline-block px-8 py-4 bg-secondary text-secondary-foreground border-2 border-secondary/80 hover:bg-secondary/90 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95 overflow-hidden"
                 >
@@ -293,8 +294,9 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div ref={contentRef} className="max-w-4xl mx-auto">
             {/* Sezione sulla storia medievale con design moderno */}
-            <div className="bg-gradient-to-br from-primary/95 to-primary/90 rounded-lg overflow-hidden shadow-2xl border-2 border-secondary/30 mb-16 transform hover:scale-[1.01] transition-all duration-500"
+            <div className="bg-charcoal rounded-lg overflow-hidden shadow-2xl border-2 border-secondary/30 mb-16 transform hover:scale-[1.01] transition-all duration-500"
                 style={{
+                  backgroundColor: 'rgba(20, 20, 20, 0.95)',
                   boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(210, 147, 38, 0.15)',
                   backdropFilter: 'blur(8px)'
                 }}
@@ -307,7 +309,7 @@ const Home = () => {
                   transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
                 }}
               >
-                <h2 className="font-title text-3xl md:text-4xl text-secondary mb-6 text-center glow-text-subtle">Introduzione al Medioevo</h2>
+                <h2 id="introduzione" className="font-title text-3xl md:text-4xl text-secondary mb-6 text-center glow-text-subtle">Introduzione al Medioevo</h2>
                 
                 <div className="h-1 w-full bg-gradient-to-r from-secondary/30 via-secondary to-secondary/30 rounded-full mb-8 animate-expand"></div>
                 
