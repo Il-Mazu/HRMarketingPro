@@ -145,14 +145,23 @@ const Curiosities = () => {
           </div>
           
           {/* Call to action */}
-          <div className="text-center mt-16 bg-transparent">
-            <Link 
-              href="/"
-              className="group relative inline-block px-8 py-4 bg-secondary text-secondary-foreground border-2 border-secondary/80 hover:bg-secondary/90 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95"
-            >
-              <span className="relative z-10">Torna all'Inizio</span>
-              <span className="absolute inset-0 z-0 bg-primary/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 pointer-events-none"></span>
-            </Link>
+          <div className="rounded-lg overflow-hidden shadow-2xl border-2 border-secondary/30 mt-16 transform hover:scale-[1.01] transition-all duration-300 text-center"
+            style={{
+              backgroundColor: 'rgba(121, 22, 15, 0.9)',
+              boxShadow: 'inset 0 0 30px rgba(210, 147, 38, 0.3), 0 10px 30px rgba(0,0,0,0.5)',
+              backdropFilter: 'blur(8px)'
+            }}
+          >
+            <div className="p-8 md:p-12">
+              <h2 className="font-title text-3xl text-secondary mb-6">Continua l'Esplorazione</h2>
+              <Link 
+                href="/"
+                className="group relative inline-block px-8 py-4 bg-secondary text-secondary-foreground border-2 border-secondary/80 hover:bg-secondary/90 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95"
+              >
+                <span className="relative z-10">Torna all'Inizio</span>
+                <span className="absolute inset-0 z-0 bg-primary/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 pointer-events-none"></span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
