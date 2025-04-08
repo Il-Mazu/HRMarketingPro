@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convert SVG to PNG</title>
+</head>
+<body>
+    <canvas id="canvas" width="32" height="32" style="border:1px solid black;"></canvas>
+    <script>
+        async function convertSVGtoPNG(svgPath, outputName) {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Create an image element
+            const img = new Image();
+            img.src = svgPath;
+            
+            // Wait for image to load
+            await new Promise(resolve => {
+                img.onload = () => {
+                    // Clear canvas
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    
+                    // Draw image
+                    ctx.drawImage(img, 0, 0, 32, 32);
+                    
+                    // Convert to PNG
+                    const pngData = canvas.toDataURL('image/png');
+                    
+                    // Create download link
+                    const link = document.createElement('a');
+                    link.download = outputName;
+                    link.href = pngData;
+                    link.click();
+                    
+                    resolve();
+                };
+            });
+        }
+
+        // Convert both cursors
+        convertSVGtoPNG('medieval-cursor.svg', 'medieval-cursor.png');
+        convertSVGtoPNG('medieval-pointer.svg', 'medieval-pointer.png');
+    </script>
+</body>
+</html> 

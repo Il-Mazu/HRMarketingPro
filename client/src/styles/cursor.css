@@ -1,0 +1,19 @@
+/* Custom cursor styles */
+* {
+  cursor: url('/cursors/medieval-cursor.png'), auto !important;
+}
+
+a, button, [role="button"], select, input[type="submit"], input[type="image"], input[type="button"], input[type="reset"], label[for], .clickable {
+  cursor: url('/cursors/medieval-pointer.png'), pointer !important;
+}
+
+/* Fallback if images don't load */
+@supports not (cursor: url('/cursors/medieval-cursor.png')) {
+  * {
+    cursor: default;
+  }
+  
+  a, button, [role="button"], select, input[type="submit"], input[type="image"], input[type="button"], input[type="reset"], label[for], .clickable {
+    cursor: pointer !important;
+  }
+} 

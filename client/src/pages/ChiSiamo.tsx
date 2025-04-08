@@ -61,343 +61,336 @@ const friendshipTimeline: TimelineEvent[] = [
 ];
 
 const ChiSiamo = () => {
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const timelineRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    // Animate title when page loads - migliorato con effetto di scale e glow
-    const title = titleRef.current;
-    const animations: (gsap.core.Tween | gsap.core.Timeline)[] = [];
+    const timeline = gsap.timeline({
+      defaults: {
+        ease: "power3.out"
+      }
+    });
     
-    if (title) {
-      const titleAnim = gsap.fromTo(
-        title,
+    if (headerRef.current) {
+      // Header background animation
+      timeline.fromTo(
+        headerRef.current,
         { 
-          opacity: 0, 
-          y: -30, 
-          scale: 0.9,
-          textShadow: "0 0 0 rgba(0,0,0,0)"
+          opacity: 0,
+          y: -50
         },
         { 
-          opacity: 1, 
-          y: 0, 
-          scale: 1,
-          textShadow: "0 0 15px rgba(210, 147, 38, 0.4), 0 0 30px rgba(210, 147, 38, 0.2)",
-          duration: 1.2, 
-          ease: "back.out(1.7)" 
+          opacity: 1,
+          y: 0,
+          duration: 0.8
         }
       );
-      animations.push(titleAnim);
-    }
-    
-    // Crea una linea del tempo animata
-    const timelineEl = timelineRef.current;
-    if (timelineEl) {
-      // Animazione della linea verticale che cresce
-      gsap.fromTo(
-        timelineEl,
-        { 
-          borderLeftWidth: '2px',
-          borderLeftColor: 'rgba(210, 147, 38, 0.1)',
-          height: '0%'
+
+      // Title animation
+      timeline.fromTo(
+        headerRef.current.querySelector('h1'),
+        {
+          opacity: 0,
+          y: 30,
+          scale: 0.9
         },
         {
-          height: '100%',
-          borderLeftColor: 'rgba(210, 147, 38, 0.5)',
-          duration: 2,
-          ease: "power2.inOut",
-          scrollTrigger: {
-            trigger: timelineEl,
-            start: "top 80%",
-            end: "bottom 20%",
-            scrub: 1
-          }
-        }
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.7,
+          ease: "back.out(1.7)"
+        },
+        "-=0.5"
       );
-      
-      // Aggiungi punti luminosi che si accendono mentre scorri
-      const timelineDots = document.querySelectorAll('.timeline-marker');
-      timelineDots.forEach((dot, index) => {
-        gsap.fromTo(
-          dot,
-          { 
-            scale: 0,
+
+      // Subtitle animation
+      timeline.fromTo(
+        headerRef.current.querySelector('p'),
+        {
+          opacity: 0,
+          y: 20
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5
+        },
+        "-=0.4"
+      );
+
+      // Divider animation
+      timeline.fromTo(
+        headerRef.current.querySelector('.bg-amber-200\\/50'),
+        {
+          opacity: 0,
+          width: "0%"
+        },
+        {
+          opacity: 1,
+          width: "6rem",
+          duration: 0.5,
+          ease: "power2.out"
+        },
+        "-=0.3"
+      );
+
+      // Parallax effect for header background
+      gsap.to(headerRef.current.querySelector('.bg-image'), {
+        y: 50,
+        ease: "none",
+        scrollTrigger: {
+          trigger: headerRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+    }
+
+    // Content section animations - now tied to the main timeline
+    if (contentRef.current) {
+      const contentSection = contentRef.current.querySelector('.content-section');
+      if (contentSection) {
+        // Initial state - hide the content section
+        gsap.set(contentSection, { opacity: 0, y: 50 });
+
+        // Main content section reveal
+        timeline.fromTo(
+          contentSection,
+          {
             opacity: 0,
-            boxShadow: '0 0 0 0 rgba(210, 147, 38, 0)'
+            y: 50
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            ease: "power2.out"
+          },
+          "+=0.1" // Reduced pause
+        );
+
+        // Frame corners animation
+        timeline.fromTo(
+          contentSection.querySelectorAll('.border-t-2, .border-b-2, .border-l-2, .border-r-2'),
+          {
+            scale: 0,
+            opacity: 0
           },
           {
             scale: 1,
             opacity: 1,
-            boxShadow: '0 0 10px 2px rgba(210, 147, 38, 0.5)',
-            duration: 0.5,
-            scrollTrigger: {
-              trigger: dot,
-              start: "top 80%",
-              toggleActions: "play none none reverse"
-            },
-            delay: 0.1 * index
-          }
-        );
-      });
-    }
-    
-    // Animate timeline items con staggered timing e avanzati effetti parallax
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    if (timelineItems.length > 0) {
-      timelineItems.forEach((item, index) => {
-        // Crea un effetto parallax per l'immagine all'interno dell'elemento
-        const image = item.querySelector('img');
-        if (image) {
-          gsap.to(image, {
-            y: -20,
-            scale: 1.05,
-            scrollTrigger: {
-              trigger: item,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 1
-            }
-          });
-        }
-        
-        // Animazione del testo con effetto staggered
-        const titleEl = item.querySelector('h3');
-        const descEl = item.querySelector('p');
-        
-        if (titleEl && descEl) {
-          const itemTl = gsap.timeline({
-            scrollTrigger: {
-              trigger: item,
-              start: "top 75%",
-              toggleActions: "play none none reverse"
-            }
-          });
-          
-          itemTl
-            .fromTo(
-              titleEl, 
-              { 
-                opacity: 0, 
-                y: -20, 
-                scale: 0.95 
-              }, 
-              {
-                opacity: 1,
-                y: 0,
-                scale: 1,
-                duration: 0.7,
-                ease: "back.out(1.7)"
-              }
-            )
-            .fromTo(
-              descEl,
-              { 
-                opacity: 0, 
-                y: 20 
-              },
-              {
-                opacity: 1,
-                y: 0,
-                duration: 0.7,
-                ease: "power2.out"
-              },
-              "-=0.4"
-            );
-          
-          animations.push(itemTl);
-        }
-      });
-    }
-    
-    // Effetto speciale migliorato sulla sezione di contenuto "La Nostra Storia"
-    const storySection = document.querySelector('.story-reveal');
-    if (storySection) {
-      const storySectionAnim = gsap.timeline({
-        scrollTrigger: {
-          trigger: storySection,
-          start: "top 75%",
-          toggleActions: "play none none none"
-        }
-      });
-      
-      // Animazione a cascata degli elementi del contenuto
-      storySectionAnim
-        .fromTo(
-          '.reveal-title',
-          { opacity: 0, y: -20, scale: 0.9 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.8, ease: "back.out(1.7)" }
-        )
-        .fromTo(
-          '.medieval-divider',
-          { width: 0, opacity: 0.5 },
-          { width: '100%', opacity: 1, duration: 1, ease: "power2.inOut" },
-          "-=0.4"
-        )
-        .fromTo(
-          '.fade-in-text',
-          { opacity: 0, y: 20 },
-          { 
-            opacity: 1, 
-            y: 0, 
-            duration: 0.6, 
-            stagger: 0.2, 
-            ease: "power2.out" 
+            duration: 0.6,
+            stagger: 0.05,
+            ease: "back.out(1.7)"
           },
-          "-=0.6"
+          "-=0.4"
         );
-      
-      animations.push(storySectionAnim);
+
+        // Gradient borders animation
+        timeline.fromTo(
+          contentSection.querySelectorAll('.bg-gradient-to-r, .bg-gradient-to-b'),
+          {
+            opacity: 0,
+            scale: 0.8
+          },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.6,
+            stagger: 0.05
+          },
+          "-=0.4"
+        );
+
+        // Title and divider animation
+        timeline.fromTo(
+          contentSection.querySelector('h2'),
+          {
+            opacity: 0,
+            y: 20
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5
+          },
+          "-=0.3"
+        );
+
+        // Text content animation
+        timeline.fromTo(
+          contentSection.querySelectorAll('p'),
+          {
+            opacity: 0,
+            y: 20
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            stagger: 0.1
+          },
+          "-=0.2"
+        );
+
+        // Image animation
+        timeline.fromTo(
+          contentSection.querySelector('img'),
+          {
+            opacity: 0,
+            scale: 0.8
+          },
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.7,
+            ease: "power2.out"
+          },
+          "-=0.5"
+        );
+      }
     }
-    
-    // Effetto di apparizione per le call-to-action in fondo alla pagina
-    const ctaSection = document.querySelector('.cta-section');
-    if (ctaSection) {
-      gsap.fromTo(
-        ctaSection,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          scrollTrigger: {
-            trigger: ctaSection,
-            start: "top 85%",
-            toggleActions: "play none none none"
-          }
-        }
-      );
-    }
-    
-    // Observer per gli elementi con effetto reveal
-    const contentElements = document.querySelectorAll('.content-reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, { threshold: 0.1 });
-    
-    contentElements.forEach(element => {
-      observer.observe(element);
-    });
-    
+
     return () => {
-      // Clean up animations manually
-      animations.forEach(anim => anim.kill());
-      
-      // Clean up ScrollTrigger instances
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-      
-      // Clean up Observer
-      contentElements.forEach(element => {
-        observer.unobserve(element);
-      });
     };
   }, []);
   
   return (
-    <div>
-      <div className="h-20"></div> {/* Spacer for fixed header */}
-      
-      {/* Hero Banner con sfondo personalizzato */}
-      <section className="py-16 border-b border-secondary/20 relative">
-        {/* Background con monastero medievale */}
-        <div className="absolute inset-0 z-0 bg-charcoal/60 bg-blend-multiply" 
-             style={{
-               backgroundImage: 'url("/images/monastery-bg.svg"), url("/images/medieval-pattern.svg")',
-               backgroundSize: 'cover, 300px',
-               backgroundPosition: 'center, center',
-               backgroundRepeat: 'no-repeat, repeat',
-             }}>
-          {/* Overlay vignette */}
-          <div className="absolute inset-0" 
-               style={{
-                 background: 'radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.5) 100%)',
-               }}>
-          </div>
-        </div>
+    <div className="min-h-screen bg-gradient-to-b from-[#1a1a1a] to-[#2d2d2d]">
+      {/* Header con stile simile a Introduzione */}
+      <div 
+        ref={headerRef}
+        className="relative h-[300px] flex items-center justify-center overflow-hidden"
+        style={{
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(45, 45, 45, 0.9))',
+          boxShadow: 'inset 0 0 100px rgba(0,0,0,0.5)'
+        }}
+      >
+        {/* Immagine di sfondo con effetto parallasse */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-fixed z-0 bg-image"
+          style={{
+            backgroundImage: 'url("https://images.unsplash.com/photo-1562239058-2878729e9ad4?q=80&w=2000")',
+            filter: 'brightness(0.2)'
+          }}
+        ></div>
         
-        <div className="container mx-auto px-4 pt-8 relative z-10">
-          <h1 ref={titleRef} className="font-title text-4xl md:text-6xl text-secondary mb-6 text-center glow-text animate-fade-in-up">
-            Chi Siamo
+        <div className="relative z-10 text-center">
+          <h1 className="text-5xl md:text-6xl font-medieval text-amber-200 mb-4 tracking-wider opacity-0"
+              style={{
+                textShadow: '0 0 20px rgba(210, 147, 38, 0.4), 0 0 40px rgba(210, 147, 38, 0.2), 0 0 60px rgba(210, 147, 38, 0.1)'
+              }}>
+            CHI SIAMO
           </h1>
-          <p className="text-foreground max-w-3xl mx-auto text-center font-medieval text-xl leading-relaxed animate-fade-in-up" style={{animationDelay: '300ms'}}>
+          <p className="text-stone-300 max-w-3xl mx-auto text-center font-medieval text-lg px-4 opacity-0">
             La storia della nostra amicizia e della nostra passione per il Medioevo
           </p>
+          <div className="w-24 h-1 bg-amber-200/50 mx-auto mt-4 opacity-0"></div>
         </div>
-      </section>
-      
+      </div>
+
       {/* About Us Content */}
-      <section className="py-16 bg-charcoal/80">
+      <section className="py-16 bg-[#1a1a1a]/80">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto mb-16 transform hover:scale-[1.01] transition-all duration-500">
-            <div className="bg-gradient-to-br from-primary/95 to-primary/90 rounded-lg overflow-hidden shadow-2xl border-2 border-secondary/30"
-              style={{
-                boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(210, 147, 38, 0.15)',
-                backdropFilter: 'blur(8px)'
-              }}
-            >
-              <div className="p-8 md:p-12 story-reveal">
-                <h2 className="font-medieval text-3xl text-secondary mb-6 text-center reveal-title">La Nostra Storia</h2>
-                
-                <div className="h-1 w-full bg-gradient-to-r from-secondary/30 via-secondary to-secondary/30 rounded-full mb-8 animate-expand"></div>
-                
-                <p className="first-letter:font-medieval first-letter:text-secondary first-letter:text-5xl first-letter:float-left first-letter:mr-2 first-letter:leading-[0.8] text-foreground mb-6 leading-relaxed fade-in-text">
-                  Siamo due amici uniti da una passione comune: il Medioevo in tutte le sue sfaccettature. La nostra amicizia è nata più di quindici anni fa durante una fiera del libro antico, quando entrambi ci siamo ritrovati a sfogliare la stessa copia di un raro testo sulle leggende medievali italiane.
-                </p>
-                
-                <p className="text-foreground/90 mb-6 leading-relaxed fade-in-text" style={{animationDelay: '0.2s'}}>
-                  Da quel momento, abbiamo condiviso innumerevoli avventure: viaggi alla scoperta di castelli dimenticati, partecipazioni a festival medievali in costume, lunghe notti passate a discutere di storia e leggende. La nostra passione ci ha portato a fondare un club locale di appassionati di storia medievale e, più recentemente, a creare questo sito web.
-                </p>
-                
-                <p className="text-foreground/90 leading-relaxed fade-in-text" style={{animationDelay: '0.4s'}}>
-                  Attraverso questo progetto, vogliamo condividere con voi le curiosità, le stranezze e le meraviglie del Medioevo che abbiamo scoperto nel nostro percorso. Crediamo che questo periodo storico, spesso frainteso, abbia molto da insegnare al mondo contemporaneo e meriti di essere esplorato con occhi nuovi.
-                </p>
+          <div ref={contentRef} className="max-w-4xl mx-auto">
+            {/* La Nostra Storia Section */}
+            <div className="content-section mb-16 transform hover:scale-[1.01] transition-all duration-700">
+              <div className="relative bg-gradient-to-br from-[#1a1a1a]/95 to-[#2a1a1a]/95 rounded-lg overflow-hidden shadow-2xl border border-amber-200/20"
+                style={{
+                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(210, 147, 38, 0.15)',
+                  backdropFilter: 'blur(8px)'
+                }}
+              >
+                {/* Decorative corners */}
+                <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-amber-200/40 rounded-tl-lg"></div>
+                <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-amber-200/40 rounded-tr-lg"></div>
+                <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-amber-200/40 rounded-bl-lg"></div>
+                <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-amber-200/40 rounded-br-lg"></div>
+
+                {/* Medieval decorative border */}
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-amber-200/40 to-transparent"></div>
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-amber-200/40 to-transparent"></div>
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 h-32 w-1 bg-gradient-to-b from-transparent via-amber-200/40 to-transparent"></div>
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 h-32 w-1 bg-gradient-to-b from-transparent via-amber-200/40 to-transparent"></div>
+                </div>
+
+                <div className="p-8 md:p-12 relative">
+                  {/* Title with decorative elements */}
+                  <div className="relative mb-12 text-center">
+                    <h2 className="font-medieval text-3xl text-amber-200 mb-4 relative inline-block">
+                      La Nostra Storia
+                      <div className="absolute -bottom-2 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-amber-200 to-transparent"></div>
+                    </h2>
+                    {/* Decorative medieval symbols */}
+                    <div className="absolute left-1/2 -translate-x-1/2 -bottom-6 w-24 h-1">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-200/40 to-transparent"></div>
+                      <div className="absolute left-1/2 -translate-x-1/2 -bottom-2 w-16 h-1 bg-gradient-to-r from-transparent via-amber-200/30 to-transparent"></div>
+                    </div>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 gap-8 items-center">
+                    <div className="relative">
+                      {/* Text content with medieval initial letter */}
+                      <p className="first-letter:font-medieval first-letter:text-amber-200 first-letter:text-6xl first-letter:float-left first-letter:mr-3 first-letter:leading-[0.8] text-stone-300 mb-6 leading-relaxed relative">
+                        <span className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-transparent via-amber-200/20 to-transparent"></span>
+                        Siamo due amici uniti da una passione comune: il Medioevo in tutte le sue sfaccettature. La nostra amicizia è nata più di quindici anni fa durante una fiera del libro antico, quando entrambi ci siamo ritrovati a sfogliare la stessa copia di un raro testo sulle leggende medievali italiane.
+                      </p>
+                      
+                      <p className="text-stone-300/90 mb-6 leading-relaxed pl-4 border-l border-amber-200/20">
+                        Da quel momento, abbiamo condiviso innumerevoli avventure: viaggi alla scoperta di castelli dimenticati, partecipazioni a festival medievali in costume, lunghe notti passate a discutere di storia e leggende.
+                      </p>
+                    </div>
+                    
+                    <div className="relative h-[300px] group">
+                      {/* Image frame with decorative corners */}
+                      <div className="absolute inset-0 border border-amber-200/30 rounded-lg overflow-hidden">
+                        <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-amber-200/40"></div>
+                        <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-amber-200/40"></div>
+                        <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-amber-200/40"></div>
+                        <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-amber-200/40"></div>
+                        <img 
+                          src="https://images.unsplash.com/photo-1584727638096-042c45049ebe?q=80&w=1200"
+                          alt="Antica biblioteca medievale"
+                          className="absolute inset-0 w-full h-full object-cover rounded-lg transition-transform duration-1000 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent rounded-lg"></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <p className="text-stone-300/90 leading-relaxed mt-8 relative">
+                    <span className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-transparent via-amber-200/20 to-transparent"></span>
+                    Attraverso questo progetto, vogliamo condividere con voi le curiosità, le stranezze e le meraviglie del Medioevo che abbiamo scoperto nel nostro percorso. Crediamo che questo periodo storico, spesso frainteso, abbia molto da insegnare al mondo contemporaneo e meriti di essere esplorato con occhi nuovi.
+                  </p>
+
+                  {/* Decorative bottom flourish */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-48 h-1">
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-200/30 to-transparent"></div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          
-          {/* Interactive Timeline */}
-          <div className="max-w-5xl mx-auto">
-            <h2 className="font-title text-3xl md:text-4xl text-secondary mb-12 text-center glow-text">
-              La Linea del Tempo della Nostra Amicizia
-            </h2>
             
-            <div ref={timelineRef} className="relative pl-6 mb-16">
-              {/* Luminous timeline line with gradient effect */}
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-secondary via-secondary/50 to-secondary/20"></div>
-              
-              {friendshipTimeline.map((event, index) => (
-                <div key={index} className="relative mb-16">
-                  <TimelineItem
-                    title={event.title}
-                    description={event.description}
-                    imageSrc={event.imageSrc}
-                    imageAlt={event.imageAlt}
-                    imagePosition={event.imagePosition}
-                    index={index}
-                  />
-                </div>
-              ))}
+            {/* Call to action */}
+            <div className="text-center mt-16">
+              <h2 className="font-title text-3xl text-amber-200 mb-6">Continua l'Esplorazione</h2>
+              <Link 
+                href="/curiosities"
+                className="inline-block px-8 py-4 mx-4 bg-gradient-to-r from-amber-200 to-amber-300 text-[#1a1a1a] border-2 border-amber-200/80 hover:from-amber-300 hover:to-amber-400 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95 shadow-lg hover:shadow-amber-200/20"
+              >
+                Esplora le Curiosità
+              </Link>
+              <Link 
+                href="/"
+                className="inline-block px-8 py-4 mx-4 bg-[#1a1a1a]/95 text-amber-200 border-2 border-amber-200/80 hover:bg-[#2a1a1a]/95 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95"
+              >
+                Torna all'Inizio
+              </Link>
             </div>
-          </div>
-          
-          {/* Call to action */}
-          <div className="text-center mt-16">
-            <h2 className="font-title text-3xl text-secondary mb-6">Continua l'Esplorazione</h2>
-            <Link 
-              href="/curiosities"
-              className="inline-block px-8 py-4 mx-4 bg-secondary text-secondary-foreground border-2 border-secondary/80 hover:bg-secondary/90 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95"
-            >
-              Esplora le Curiosità
-            </Link>
-            <Link 
-              href="/"
-              className="inline-block px-8 py-4 mx-4 bg-primary text-foreground border-2 border-secondary/80 hover:bg-primary/90 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95"
-            >
-              Torna all'Inizio
-            </Link>
           </div>
         </div>
       </section>
