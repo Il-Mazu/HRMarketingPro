@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <!-- Background color layer -->
+  <rect width="1200" height="800" fill="#1a1a1a"/>
+  
+  <!-- Starry night sky -->
+  <g opacity="0.8">
+    <!-- Generate many small stars -->
+    <circle cx="120" cy="60" r="1" fill="#ffffff" opacity="0.7"/>
+    <circle cx="350" cy="40" r="1.2" fill="#ffffff" opacity="0.8"/>
+    <circle cx="600" cy="80" r="1.5" fill="#ffffff" opacity="0.9"/>
+    <circle cx="800" cy="50" r="1" fill="#ffffff" opacity="0.7"/>
+    <circle cx="950" cy="90" r="1.3" fill="#ffffff" opacity="0.8"/>
+    <circle cx="1100" cy="70" r="1" fill="#ffffff" opacity="0.6"/>
+    <circle cx="200" cy="120" r="1.1" fill="#ffffff" opacity="0.7"/>
+    <circle cx="500" cy="150" r="1" fill="#ffffff" opacity="0.8"/>
+    <circle cx="700" cy="180" r="1.4" fill="#ffffff" opacity="0.7"/>
+    <circle cx="900" cy="140" r="1" fill="#ffffff" opacity="0.9"/>
+    <circle cx="1050" cy="130" r="1.2" fill="#ffffff" opacity="0.7"/>
+    <circle cx="300" cy="200" r="1" fill="#ffffff" opacity="0.8"/>
+    <circle cx="180" cy="250" r="1.3" fill="#ffffff" opacity="0.7"/>
+    <circle cx="400" cy="220" r="1" fill="#ffffff" opacity="0.9"/>
+    <circle cx="620" cy="190" r="1.2" fill="#ffffff" opacity="0.8"/>
+    <circle cx="850" cy="230" r="1" fill="#ffffff" opacity="0.7"/>
+    <circle cx="1000" cy="210" r="1.4" fill="#ffffff" opacity="0.8"/>
+    <circle cx="1150" cy="240" r="1" fill="#ffffff" opacity="0.9"/>
+    
+    <!-- Brightest stars with subtle glow -->
+    <circle cx="250" cy="100" r="2" fill="#ffffff"/>
+    <circle cx="250" cy="100" r="4" fill="#ffffff" opacity="0.1"/>
+    
+    <circle cx="780" cy="120" r="2" fill="#ffffff"/>
+    <circle cx="780" cy="120" r="4" fill="#ffffff" opacity="0.1"/>
+    
+    <circle cx="480" cy="80" r="2" fill="#ffffff"/>
+    <circle cx="480" cy="80" r="4" fill="#ffffff" opacity="0.1"/>
+    
+    <circle cx="1050" cy="180" r="2" fill="#ffffff"/>
+    <circle cx="1050" cy="180" r="4" fill="#ffffff" opacity="0.1"/>
+  </g>
+  
+  <!-- Distant mountains -->
+  <path d="M0,500 L150,420 L300,490 L450,380 L600,450 L750,390 L900,480 L1050,400 L1200,460 L1200,800 L0,800 Z" fill="#262626"/>
+  
+  <!-- Closer mountains -->
+  <path d="M0,550 L100,480 L200,540 L300,470 L400,530 L500,480 L600,520 L700,460 L800,540 L900,490 L1000,530 L1100,480 L1200,520 L1200,800 L0,800 Z" fill="#202020"/>
+  
+  <!-- Castle silhouette -->
+  <g>
+    <!-- Main castle structure -->
+    <rect x="350" y="450" width="500" height="350" fill="#0f0f0f"/>
+    
+    <!-- Castle towers -->
+    <rect x="300" y="400" width="80" height="400" fill="#0f0f0f"/>
+    <rect x="820" y="400" width="80" height="400" fill="#0f0f0f"/>
+    <rect x="450" y="380" width="50" height="420" fill="#0f0f0f"/>
+    <rect x="700" y="380" width="50" height="420" fill="#0f0f0f"/>
+    
+    <!-- Tower tops -->
+    <polygon points="300,400 340,370 380,400" fill="#0f0f0f"/>
+    <polygon points="820,400 860,370 900,400" fill="#0f0f0f"/>
+    <polygon points="450,380 475,350 500,380" fill="#0f0f0f"/>
+    <polygon points="700,380 725,350 750,380" fill="#0f0f0f"/>
+    
+    <!-- Castle crenellations (battlements) -->
+    <g>
+      <!-- Main wall crenellations -->
+      <rect x="350" y="440" width="20" height="20" fill="#0f0f0f"/>
+      <rect x="390" y="440" width="20" height="20" fill="#0f0f0f"/>
+      <rect x="430" y="440" width="20" height="20" fill="#0f0f0f"/>
+      <rect x="510" y="440" width="20" height="20" fill="#0f0f0f"/>
+      <rect x="550" y="440" width="20" height="20" fill="#0f0f0f"/>
+      <rect x="590" y="440" width="20" height="20" fill="#0f0f0f"/>
+      <rect x="630" y="440" width="20" height="20" fill="#0f0f0f"/>
+      <rect x="670" y="440" width="20" height="20" fill="#0f0f0f"/>
+      <rect x="750" y="440" width="20" height="20" fill="#0f0f0f"/>
+      <rect x="790" y="440" width="20" height="20" fill="#0f0f0f"/>
+      <rect x="830" y="440" width="20" height="20" fill="#0f0f0f"/>
+      
+      <!-- Tower crenellations -->
+      <rect x="300" y="390" width="10" height="10" fill="#0f0f0f"/>
+      <rect x="320" y="390" width="10" height="10" fill="#0f0f0f"/>
+      <rect x="340" y="390" width="10" height="10" fill="#0f0f0f"/>
+      <rect x="360" y="390" width="10" height="10" fill="#0f0f0f"/>
+      
+      <rect x="820" y="390" width="10" height="10" fill="#0f0f0f"/>
+      <rect x="840" y="390" width="10" height="10" fill="#0f0f0f"/>
+      <rect x="860" y="390" width="10" height="10" fill="#0f0f0f"/>
+      <rect x="880" y="390" width="10" height="10" fill="#0f0f0f"/>
+      
+      <rect x="450" y="370" width="10" height="10" fill="#0f0f0f"/>
+      <rect x="470" y="370" width="10" height="10" fill="#0f0f0f"/>
+      <rect x="490" y="370" width="10" height="10" fill="#0f0f0f"/>
+      
+      <rect x="700" y="370" width="10" height="10" fill="#0f0f0f"/>
+      <rect x="720" y="370" width="10" height="10" fill="#0f0f0f"/>
+      <rect x="740" y="370" width="10" height="10" fill="#0f0f0f"/>
+    </g>
+    
+    <!-- Castle windows and details -->
+    <rect x="380" y="520" width="15" height="30" fill="#333333"/>
+    <rect x="440" y="520" width="15" height="30" fill="#333333"/>
+    <rect x="500" y="520" width="15" height="30" fill="#333333"/>
+    <rect x="560" y="520" width="15" height="30" fill="#333333"/>
+    <rect x="620" y="520" width="15" height="30" fill="#333333"/>
+    <rect x="680" y="520" width="15" height="30" fill="#333333"/>
+    <rect x="740" y="520" width="15" height="30" fill="#333333"/>
+    <rect x="800" y="520" width="15" height="30" fill="#333333"/>
+    
+    <!-- Castle gate -->
+    <rect x="550" y="630" width="100" height="170" fill="#1f1f1f"/>
+    <path d="M550,630 Q600,600 650,630" fill="none" stroke="#333333" stroke-width="2"/>
+    
+    <!-- Small flag -->
+    <rect x="475" y="340" width="2" height="15" fill="#444444"/>
+    <path d="M477,340 L487,345 L477,350" fill="#bf9b30"/>
+    
+    <rect x="725" y="340" width="2" height="15" fill="#444444"/>
+    <path d="M727,340 L737,345 L727,350" fill="#bf9b30"/>
+  </g>
+  
+  <!-- Foreground silhouette -->
+  <path d="M0,700 Q100,680 200,700 Q300,690 400,700 Q500,680 600,700 Q700,690 800,700 Q900,680 1000,700 Q1100,690 1200,700 L1200,800 L0,800 Z" fill="#0a0a0a"/>
+  
+  <!-- Fog/mist effect -->
+  <rect x="0" y="550" width="1200" height="250" fill="url(#mistyGradient)" opacity="0.2"/>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="mistyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0"/>
+    </linearGradient>
+  </defs>
+</svg>

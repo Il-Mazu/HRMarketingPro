@@ -1,33 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="300px" height="300px" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg">
-    <title>Medieval Pattern</title>
-    <defs>
-        <pattern id="MedievalPattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-            <!-- Base pattern elements -->
-            <path d="M0,0 L50,0 L50,50 L0,50 Z" fill="none" stroke="#8B7513" stroke-width="2" opacity="0.3"/>
-            <path d="M50,0 L100,0 L100,50 L50,50 Z" fill="none" stroke="#8B7513" stroke-width="2" opacity="0.3"/>
-            <path d="M0,50 L50,50 L50,100 L0,100 Z" fill="none" stroke="#8B7513" stroke-width="2" opacity="0.3"/>
-            <path d="M50,50 L100,50 L100,100 L50,100 Z" fill="none" stroke="#8B7513" stroke-width="2" opacity="0.3"/>
-            
-            <!-- Decorative elements -->
-            <circle cx="25" cy="25" r="8" fill="none" stroke="#8B7513" stroke-width="1.5" opacity="0.4"/>
-            <circle cx="75" cy="25" r="8" fill="none" stroke="#8B7513" stroke-width="1.5" opacity="0.4"/>
-            <circle cx="25" cy="75" r="8" fill="none" stroke="#8B7513" stroke-width="1.5" opacity="0.4"/>
-            <circle cx="75" cy="75" r="8" fill="none" stroke="#8B7513" stroke-width="1.5" opacity="0.4"/>
-            
-            <!-- Fleur-de-lis element -->
-            <path d="M25,20 C25,15 28,13 30,15 C32,17 30,23 30,25 C30,27 32,30 30,32 C28,34 22,34 20,32 C18,30 18,27 20,25 C22,23 20,17 22,15 C24,13 25,15 25,20 Z" fill="#8B7513" opacity="0.3"/>
-            <path d="M75,20 C75,15 78,13 80,15 C82,17 80,23 80,25 C80,27 82,30 80,32 C78,34 72,34 70,32 C68,30 68,27 70,25 C72,23 70,17 72,15 C74,13 75,15 75,20 Z" fill="#8B7513" opacity="0.3"/>
-            <path d="M25,70 C25,65 28,63 30,65 C32,67 30,73 30,75 C30,77 32,80 30,82 C28,84 22,84 20,82 C18,80 18,77 20,75 C22,73 20,67 22,65 C24,63 25,65 25,70 Z" fill="#8B7513" opacity="0.3"/>
-            <path d="M75,70 C75,65 78,63 80,65 C82,67 80,73 80,75 C80,77 82,80 80,82 C78,84 72,84 70,82 C68,80 68,77 70,75 C72,73 70,67 72,65 C74,63 75,65 75,70 Z" fill="#8B7513" opacity="0.3"/>
-            
-            <!-- Cross elements -->
-            <path d="M50,45 L50,55 M45,50 L55,50" stroke="#8B7513" stroke-width="2" opacity="0.4"/>
-            <path d="M0,45 L0,55 M-5,50 L5,50" stroke="#8B7513" stroke-width="2" opacity="0.4"/>
-            <path d="M100,45 L100,55 M95,50 L105,50" stroke="#8B7513" stroke-width="2" opacity="0.4"/>
-            <path d="M50,-5 L50,5 M45,0 L55,0" stroke="#8B7513" stroke-width="2" opacity="0.4"/>
-            <path d="M50,95 L50,105 M45,100 L55,100" stroke="#8B7513" stroke-width="2" opacity="0.4"/>
-        </pattern>
-    </defs>
-    <rect width="300" height="300" fill="url(#MedievalPattern)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <!-- Pattern definitions -->
+    <pattern id="medievalPattern" patternUnits="userSpaceOnUse" width="400" height="400">
+      <rect width="400" height="400" fill="#1a1a1a" opacity="0.8"/>
+      
+      <!-- Decorative Celtic-inspired knotwork -->
+      <g fill="none" stroke="#bf9b30" stroke-width="1.5" opacity="0.2">
+        <!-- Diagonal grid -->
+        <path d="M0,0 L400,400 M50,0 L450,400 M100,0 L500,400 M150,0 L550,400 M200,0 L600,400 M250,0 L650,400 M300,0 L700,400 M350,0 L750,400" />
+        <path d="M400,0 L0,400 M450,0 L50,400 M500,0 L100,400 M550,0 L150,400 M600,0 L200,400 M650,0 L250,400 M700,0 L300,400 M750,0 L350,400" />
+        
+        <!-- Celtic knot patterns -->
+        <!-- Central ornate pattern -->
+        <g transform="translate(200, 200)">
+          <circle cx="0" cy="0" r="40" stroke-width="2"/>
+          <circle cx="0" cy="0" r="60" stroke-width="1"/>
+          <circle cx="0" cy="0" r="80" stroke-width="1.5"/>
+          
+          <!-- Cruciform pattern -->
+          <path d="M-80,0 L80,0 M0,-80 L0,80" stroke-width="2"/>
+          
+          <!-- Celtic knotwork triangles -->
+          <path d="M0,0 L40,40 L-40,40 Z" fill="none"/>
+          <path d="M0,0 L40,-40 L-40,-40 Z" fill="none"/>
+          <path d="M0,0 L-40,-40 L-40,40 Z" fill="none"/>
+          <path d="M0,0 L40,-40 L40,40 Z" fill="none"/>
+        </g>
+        
+        <!-- Corner ornate patterns -->
+        <g transform="translate(100, 100)">
+          <circle cx="0" cy="0" r="20" stroke-width="1"/>
+          <circle cx="0" cy="0" r="30" stroke-width="0.8"/>
+          <path d="M-30,0 L30,0 M0,-30 L0,30" stroke-width="1.2"/>
+        </g>
+        
+        <g transform="translate(300, 100)">
+          <circle cx="0" cy="0" r="20" stroke-width="1"/>
+          <circle cx="0" cy="0" r="30" stroke-width="0.8"/>
+          <path d="M-30,0 L30,0 M0,-30 L0,30" stroke-width="1.2"/>
+        </g>
+        
+        <g transform="translate(100, 300)">
+          <circle cx="0" cy="0" r="20" stroke-width="1"/>
+          <circle cx="0" cy="0" r="30" stroke-width="0.8"/>
+          <path d="M-30,0 L30,0 M0,-30 L0,30" stroke-width="1.2"/>
+        </g>
+        
+        <g transform="translate(300, 300)">
+          <circle cx="0" cy="0" r="20" stroke-width="1"/>
+          <circle cx="0" cy="0" r="30" stroke-width="0.8"/>
+          <path d="M-30,0 L30,0 M0,-30 L0,30" stroke-width="1.2"/>
+        </g>
+        
+        <!-- Interlaced borders -->
+        <path d="M0,50 L50,0 L100,50 L150,0 L200,50 L250,0 L300,50 L350,0 L400,50" />
+        <path d="M0,350 L50,400 L100,350 L150,400 L200,350 L250,400 L300,350 L350,400 L400,350" />
+        <path d="M50,0 L0,50 L50,100 L0,150 L50,200 L0,250 L50,300 L0,350 L50,400" />
+        <path d="M350,0 L400,50 L350,100 L400,150 L350,200 L400,250 L350,300 L400,350 L350,400" />
+        
+        <!-- Connecting lines -->
+        <path d="M100,100 L200,200 M300,100 L200,200 M100,300 L200,200 M300,300 L200,200" stroke-dasharray="5,5"/>
+      </g>
+      
+      <!-- Subtle decorative elements -->
+      <g fill="#bf9b30" opacity="0.1">
+        <circle cx="200" cy="200" r="3"/>
+        <circle cx="100" cy="100" r="2"/>
+        <circle cx="300" cy="100" r="2"/>
+        <circle cx="100" cy="300" r="2"/>
+        <circle cx="300" cy="300" r="2"/>
+        
+        <!-- Small decorative elements at intersections -->
+        <circle cx="50" cy="50" r="1"/>
+        <circle cx="150" cy="50" r="1"/>
+        <circle cx="250" cy="50" r="1"/>
+        <circle cx="350" cy="50" r="1"/>
+        
+        <circle cx="50" cy="150" r="1"/>
+        <circle cx="150" cy="150" r="1"/>
+        <circle cx="250" cy="150" r="1"/>
+        <circle cx="350" cy="150" r="1"/>
+        
+        <circle cx="50" cy="250" r="1"/>
+        <circle cx="150" cy="250" r="1"/>
+        <circle cx="250" cy="250" r="1"/>
+        <circle cx="350" cy="250" r="1"/>
+        
+        <circle cx="50" cy="350" r="1"/>
+        <circle cx="150" cy="350" r="1"/>
+        <circle cx="250" cy="350" r="1"/>
+        <circle cx="350" cy="350" r="1"/>
+      </g>
+    </pattern>
+  </defs>
+  
+  <!-- Background using the pattern -->
+  <rect width="400" height="400" fill="url(#medievalPattern)"/>
 </svg>

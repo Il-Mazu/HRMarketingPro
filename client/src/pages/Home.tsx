@@ -57,31 +57,49 @@ const Home = () => {
     <div>
       {/* Hero Section */}
       <section id="hero" className="min-h-screen relative flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0 bg-charcoal bg-opacity-70 bg-blend-multiply" 
+        <div className="absolute inset-0 z-0 bg-charcoal bg-opacity-60 bg-blend-multiply" 
              style={{
-               backgroundImage: 'url("/images/hero-bg.png"), url("/images/medieval-pattern.svg")',
+               backgroundImage: 'url("/images/medieval-castle-bg.svg"), url("/images/medieval-pattern.svg")',
                backgroundSize: 'cover, 300px',
                backgroundPosition: 'center, center',
                backgroundRepeat: 'no-repeat, repeat',
              }}>
+          {/* Overlay con effetto vignette per enfatizzare area centrale */}
+          <div className="absolute inset-0" 
+               style={{
+                 background: 'radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.4) 100%)',
+               }}>
+          </div>
         </div>
         
         {/* Animated sword component */}
         <ScrollSword mainTitleId="main-title" />
         
         <div className="container mx-auto px-4 z-20 text-center">
-          <h1 id="main-title" className="font-title text-5xl md:text-7xl lg:text-8xl mb-6 text-secondary tracking-widest glow-text">
-            MYSTERIUM <br /><span className="text-4xl md:text-6xl text-foreground">MEDII AEVI</span>
+          <h1 id="main-title" className="font-title text-5xl md:text-7xl lg:text-8xl mb-6 text-secondary tracking-widest glow-text animate-fade-in-up">
+            MYSTERIUM <br />
+            <span className="text-4xl md:text-6xl text-foreground block mt-4 animate-fade-in-up" style={{animationDelay: '400ms'}}>
+              MEDII AEVI
+            </span>
           </h1>
-          <p ref={introTextRef} className="font-medieval text-xl md:text-2xl text-foreground italic max-w-3xl mx-auto opacity-0">
+          
+          <p ref={introTextRef} className="font-medieval text-xl md:text-2xl text-foreground italic max-w-3xl mx-auto opacity-0 animate-fade-in-up" style={{animationDelay: '800ms'}}>
             Viaggia nei segreti e nelle meraviglie dell'epoca medievale
           </p>
-          <div className="mt-16">
-            <Link href="#about" onClick={(e) => {
-              e.preventDefault();
-              document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
-            }} className="inline-block px-8 py-4 bg-primary text-foreground border-2 border-secondary hover:bg-primary/80 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95">
-              Inizia il Viaggio
+          
+          <div className="mt-16 animate-fade-in-up" style={{animationDelay: '1200ms'}}>
+            <Link 
+              href="#about" 
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+              }} 
+              className="group relative inline-block px-8 py-4 bg-primary text-foreground border-2 border-secondary hover:bg-primary/80 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95 overflow-hidden"
+            >
+              <span className="relative z-10">Inizia il Viaggio</span>
+              <span className="absolute inset-0 bg-secondary/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
+              <span className="absolute -top-1 -right-1 w-3 h-3 bg-secondary rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
+              <span className="absolute -bottom-1 -left-1 w-3 h-3 bg-secondary rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></span>
             </Link>
           </div>
         </div>

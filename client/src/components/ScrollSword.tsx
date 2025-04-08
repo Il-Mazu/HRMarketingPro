@@ -18,44 +18,68 @@ const ScrollSword = ({ mainTitleId }: ScrollSwordProps) => {
     
     if (!sword || !mainTitle) return;
     
-    // Set initial state
-    gsap.set(sword, {
-      rotate: -45,
-      scale: 1,
-      opacity: 0.5,
-    });
+    // Initial appearance animation
+    gsap.fromTo(sword, 
+      { 
+        rotate: -90, 
+        scale: 0.5, 
+        y: 100, 
+        opacity: 0 
+      },
+      { 
+        rotate: -45, 
+        scale: 1, 
+        y: 0, 
+        opacity: 0.8, 
+        duration: 1.5, 
+        ease: "power3.out",
+        delay: 0.3
+      }
+    );
     
-    // Create sword animation on scroll
+    // Advanced scroll animation for sword
     const swordAnim = gsap.timeline({
       scrollTrigger: {
         trigger: "#hero",
         start: "top top",
-        end: "bottom top",
-        scrub: 0.5,
+        end: "bottom center",
+        scrub: true,
+        pin: false,
+        pinSpacing: false,
       }
     });
     
-    swordAnim.to(sword, {
-      scale: 2.5,
-      rotate: -20,
-      opacity: 0.8,
-      ease: "power1.inOut",
-    });
+    swordAnim
+      .to(sword, {
+        scale: 2,
+        rotate: 0,
+        y: -30,
+        opacity: 1,
+        ease: "power2.inOut",
+      })
+      .to(sword, {
+        scale: 3,
+        rotate: 45,
+        y: -100,
+        opacity: 0.4,
+        ease: "power2.inOut",
+      }, "+=0.2");
     
-    // Create title animation on scroll
+    // Advanced scroll animation for title
     const titleAnim = gsap.timeline({
       scrollTrigger: {
         trigger: "#hero",
         start: "top top",
-        end: "bottom top",
-        scrub: 0.5,
+        end: "center center",
+        scrub: true,
       }
     });
     
     titleAnim.to(mainTitle, {
-      y: -100,
-      opacity: 0.2,
-      ease: "power1.inOut",
+      y: -60,
+      scale: 0.8,
+      opacity: 0.1,
+      ease: "power2.inOut",
     });
     
     return () => {
@@ -66,12 +90,25 @@ const ScrollSword = ({ mainTitleId }: ScrollSwordProps) => {
   
   return (
     <div className="absolute z-10 w-full h-full flex justify-center items-center pointer-events-none">
-      <img 
-        ref={swordRef}
-        className="w-1/4 md:w-1/6 transition-transform duration-500"
-        src="/images/medieval-sword.svg"
-        alt="Spada medievale decorativa" 
-      />
+      <div className="relative">
+        {/* Ombra della spada per effetto maggiore */}
+        <div className="absolute inset-0 blur-md opacity-50 scale-110" style={{ filter: 'drop-shadow(0 0 10px rgba(191, 155, 48, 0.8))' }}>
+          <img 
+            className="w-full h-full"
+            src="/images/medieval-sword.svg"
+            alt="" 
+          />
+        </div>
+        
+        {/* Spada principale */}
+        <img 
+          ref={swordRef}
+          className="w-1/3 md:w-1/4 lg:w-1/5 relative z-10 filter drop-shadow-lg"
+          src="/images/medieval-sword.svg"
+          alt="Spada medievale decorativa" 
+          style={{ filter: 'drop-shadow(0 0 5px rgba(255, 255, 255, 0.5))' }}
+        />
+      </div>
     </div>
   );
 };

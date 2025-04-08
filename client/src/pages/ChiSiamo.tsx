@@ -19,42 +19,42 @@ const friendshipTimeline: TimelineEvent[] = [
   {
     title: "2005 - Primo Incontro",
     description: "Il nostro primo incontro alla fiera medievale di Montefiascone. Entrambi appassionati di storia medievale, ci siamo trovati nello stesso stand di libri antichi e abbiamo scoperto la nostra comune passione per i manoscritti medievali e la storia dei templari.",
-    imageSrc: "/images/hero-bg.png",
+    imageSrc: "/images/medieval-castle-bg.svg",
     imageAlt: "Fiera medievale con libri antichi",
     imagePosition: "right",
   },
   {
     title: "2008 - Primo Viaggio Insieme",
     description: "Il nostro primo viaggio insieme alla scoperta dei castelli della Loira in Francia. Un'esperienza indimenticabile che ha cementato la nostra amicizia attraverso l'esplorazione di antiche fortezze, sale dei cavalieri e biblioteche storiche che custodiscono documenti risalenti al Medioevo.",
-    imageSrc: "/images/hero-bg.png",
+    imageSrc: "/images/monastery-bg.svg",
     imageAlt: "Castello medievale in Francia",
     imagePosition: "left",
   },
   {
     title: "2012 - Fondazione del Club di Storia",
     description: "Abbiamo fondato insieme il 'Club degli Appassionati di Storia Medievale' nella nostra città, creando una comunità di persone con la nostra stessa passione. Ogni mese organizziamo incontri tematici, visite guidate e laboratori pratici per riscoprire tecniche e tradizioni medievali.",
-    imageSrc: "/images/hero-bg.png",
+    imageSrc: "/images/medieval-castle-bg.svg",
     imageAlt: "Persone riunite ad un evento storico",
     imagePosition: "right",
   },
   {
     title: "2015 - Pubblicazione del Nostro Primo Libro",
     description: "Dopo anni di ricerca in biblioteche e archivi storici, abbiamo pubblicato il nostro primo libro insieme: 'Segreti e Leggende del Medioevo Italiano'. Il volume raccoglie storie poco conosciute e curiosità sorprendenti che abbiamo scoperto durante i nostri viaggi attraverso borghi e castelli italiani.",
-    imageSrc: "/images/hero-bg.png",
+    imageSrc: "/images/parchment-texture.svg",
     imageAlt: "Libro antico su un tavolo in legno",
     imagePosition: "left",
   },
   {
     title: "2018 - Partecipazione al Festival Medievale",
     description: "Siamo stati invitati come relatori al prestigioso Festival Medievale di Monteriggioni, un riconoscimento importante per il nostro lavoro di divulgazione storica. La nostra conferenza sulle superstizioni e credenze popolari nel Medioevo ha attirato un pubblico numeroso e interessato.",
-    imageSrc: "/images/hero-bg.png",
+    imageSrc: "/images/monastery-bg.svg",
     imageAlt: "Festival medievale con bandiere e costumi d'epoca",
     imagePosition: "right",
   },
   {
     title: "2022 - Creazione del Sito Web",
     description: "Abbiamo deciso di condividere la nostra passione con il mondo intero creando questo sito web, un progetto che ci sta molto a cuore. Mysterium Medii Aevi rappresenta il culmine del nostro percorso insieme e uno strumento per divulgare la ricchezza culturale di un'epoca affascinante e complessa.",
-    imageSrc: "/images/hero-bg.png",
+    imageSrc: "/images/medieval-pattern.svg",
     imageAlt: "Computer moderno con contenuti medievali",
     imagePosition: "left",
   }
@@ -67,8 +67,10 @@ const ChiSiamo = () => {
   useEffect(() => {
     // Animate title when page loads
     const title = titleRef.current;
+    const animations: gsap.core.Tween[] = [];
+    
     if (title) {
-      gsap.fromTo(
+      const titleAnim = gsap.fromTo(
         title,
         { opacity: 0, y: -20 },
         { 
@@ -78,31 +80,57 @@ const ChiSiamo = () => {
           ease: "power2.out" 
         }
       );
+      animations.push(titleAnim);
     }
     
     // Animate timeline items on scroll
-    const timelineItems = document.querySelectorAll('.timeline-event');
+    const timelineItems = document.querySelectorAll('.timeline-item');
     if (timelineItems.length > 0) {
       timelineItems.forEach((item, index) => {
-        gsap.fromTo(
+        const itemAnim = gsap.fromTo(
           item,
-          { opacity: 0, x: index % 2 === 0 ? -50 : 50 },
+          { opacity: 0, x: index % 2 === 0 ? -30 : 30, y: 20 },
           {
             opacity: 1,
             x: 0,
+            y: 0,
             duration: 0.8,
             scrollTrigger: {
               trigger: item,
-              start: "top 75%",
+              start: "top 80%",
               toggleActions: "play none none none"
             },
             delay: 0.1 * index
           }
         );
+        animations.push(itemAnim);
       });
     }
     
+    // Effetto speciale sulla sezione di contenuto "La Nostra Storia"
+    const storySection = document.querySelector('.parchment');
+    if (storySection) {
+      const storySectionAnim = gsap.fromTo(
+        storySection,
+        { opacity: 0, scale: 0.95 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1.2,
+          scrollTrigger: {
+            trigger: storySection,
+            start: "top 75%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
+      animations.push(storySectionAnim);
+    }
+    
     return () => {
+      // Clean up animations manually
+      animations.forEach(anim => anim.kill());
+      
       // Clean up ScrollTrigger instances
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
@@ -112,13 +140,29 @@ const ChiSiamo = () => {
     <div>
       <div className="h-20"></div> {/* Spacer for fixed header */}
       
-      {/* Hero Banner */}
-      <section className="py-16 bg-gradient-to-b from-charcoal to-charcoal/80 border-b border-secondary/20">
-        <div className="container mx-auto px-4 pt-8">
-          <h1 ref={titleRef} className="font-title text-4xl md:text-6xl text-secondary mb-6 text-center glow-text">
+      {/* Hero Banner con sfondo personalizzato */}
+      <section className="py-16 border-b border-secondary/20 relative">
+        {/* Background con monastero medievale */}
+        <div className="absolute inset-0 z-0 bg-charcoal/60 bg-blend-multiply" 
+             style={{
+               backgroundImage: 'url("/images/monastery-bg.svg"), url("/images/medieval-pattern.svg")',
+               backgroundSize: 'cover, 300px',
+               backgroundPosition: 'center, center',
+               backgroundRepeat: 'no-repeat, repeat',
+             }}>
+          {/* Overlay vignette */}
+          <div className="absolute inset-0" 
+               style={{
+                 background: 'radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.5) 100%)',
+               }}>
+          </div>
+        </div>
+        
+        <div className="container mx-auto px-4 pt-8 relative z-10">
+          <h1 ref={titleRef} className="font-title text-4xl md:text-6xl text-secondary mb-6 text-center glow-text animate-fade-in-up">
             Chi Siamo
           </h1>
-          <p className="text-foreground max-w-3xl mx-auto text-center font-medieval text-xl leading-relaxed">
+          <p className="text-foreground max-w-3xl mx-auto text-center font-medieval text-xl leading-relaxed animate-fade-in-up" style={{animationDelay: '300ms'}}>
             La storia della nostra amicizia e della nostra passione per il Medioevo
           </p>
         </div>

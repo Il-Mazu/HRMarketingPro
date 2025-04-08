@@ -52,7 +52,7 @@ const Curiosities = () => {
     // Animate title when page loads
     const title = titleRef.current;
     if (title) {
-      gsap.fromTo(
+      const titleAnim = gsap.fromTo(
         title,
         { opacity: 0, y: -20 },
         { 
@@ -62,24 +62,65 @@ const Curiosities = () => {
           ease: "power2.out" 
         }
       );
+      
+      // Aggiungi animazione all'entrata degli elementi timeline
+      const timelineItems = document.querySelectorAll('.timeline-item');
+      timelineItems.forEach((item, index) => {
+        gsap.fromTo(
+          item,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: 0.2 + (index * 0.1),
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: item,
+              start: "top 85%",
+              toggleActions: "play none none none"
+            }
+          }
+        );
+      });
+      
+      return () => {
+        // Clean up animations manually
+        titleAnim.kill();
+        
+        // Clean up ScrollTrigger instances
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      };
     }
-    
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
   }, []);
   
   return (
     <div>
       <div className="h-20"></div> {/* Spacer for fixed header */}
       
-      {/* Hero Banner */}
-      <section className="py-16 bg-charcoal/90 border-b border-secondary/30">
-        <div className="container mx-auto px-4 pt-8">
-          <h1 ref={titleRef} className="font-title text-4xl md:text-5xl text-secondary mb-6 text-center">
+      {/* Hero Banner con sfondo della biblioteca medievale */}
+      <section className="py-16 border-b border-secondary/30 relative">
+        {/* Background */}
+        <div className="absolute inset-0 z-0 bg-charcoal/70 bg-blend-multiply" 
+             style={{
+               backgroundImage: 'url("/images/curiosities-bg.svg"), url("/images/medieval-pattern.svg")',
+               backgroundSize: 'cover, 300px',
+               backgroundPosition: 'center, center',
+               backgroundRepeat: 'no-repeat, repeat',
+             }}>
+          {/* Overlay vignette */}
+          <div className="absolute inset-0" 
+               style={{
+                 background: 'radial-gradient(circle at center, transparent 30%, rgba(0,0,0,0.4) 100%)',
+               }}>
+          </div>
+        </div>
+        
+        <div className="container mx-auto px-4 pt-8 relative z-10">
+          <h1 ref={titleRef} className="font-title text-4xl md:text-5xl text-secondary mb-6 text-center glow-text animate-fade-in-up">
             Curiosità Medievali
           </h1>
-          <p className="text-foreground max-w-3xl mx-auto text-center font-medieval text-lg">
+          <p className="text-foreground max-w-3xl mx-auto text-center font-medieval text-lg animate-fade-in-up" style={{animationDelay: '300ms'}}>
             Esplora le stranezze, i misteri e le pratiche affascinanti dell'epoca medievale
           </p>
         </div>
