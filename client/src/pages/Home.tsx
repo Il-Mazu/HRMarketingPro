@@ -278,10 +278,9 @@ const Home = () => {
                     e.preventDefault();
                     document.getElementById("introduzione")?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="group relative inline-block px-8 py-4 bg-secondary text-secondary-foreground border-2 border-secondary/80 hover:bg-secondary/90 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95"
+                  className="inline-block px-8 py-4 bg-secondary text-secondary-foreground border-2 border-secondary/80 hover:bg-secondary/90 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95"
                 >
-                  <span className="relative z-10">Inizia il Viaggio</span>
-                  <span className="absolute inset-0 z-0 bg-primary/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 pointer-events-none"></span>
+                  Inizia il Viaggio
                 </Link>
               </div>
             </div>
@@ -293,42 +292,113 @@ const Home = () => {
       <section id="content" className="py-20 bg-charcoal/95">
         <div className="container mx-auto px-4">
           <div ref={contentRef} className="max-w-4xl mx-auto">
-            {/* Sezione sulla storia medievale con design moderno */}
-            <div className="rounded-lg overflow-hidden shadow-2xl border-2 border-secondary/30 mb-16 transform hover:scale-[1.01] transition-all duration-300"
-                style={{
-                  backgroundColor: 'rgba(121, 22, 15, 0.9)',
-                  boxShadow: 'inset 0 0 30px rgba(210, 147, 38, 0.3), 0 10px 30px rgba(0,0,0,0.5)',
-                  backdropFilter: 'blur(8px)'
-                }}
-            >
+            {/* Sezione sulla storia medievale con design migliorato e integrato */}
+            <div className="mb-16 transform transition-all duration-300">
+              {/* Header con sfumatura e texture integrata con lo sfondo */}
               <div 
-                className="p-8 md:p-12 content-reveal"
+                className="text-center p-6 rounded-t-lg border-t-2 border-x-2 border-secondary/30"
                 style={{
+                  background: 'linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(121, 22, 15, 0.7))',
+                  backgroundImage: 'url("/images/medieval-texture.svg"), linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(121, 22, 15, 0.7))',
+                  backgroundBlendMode: 'overlay',
+                  boxShadow: 'inset 0 0 20px rgba(210, 147, 38, 0.2)',
+                  backdropFilter: 'blur(4px)'
+                }}
+              >
+                <h2 id="introduzione" className="font-title text-3xl md:text-4xl text-secondary mb-3 text-center glow-text-subtle relative">
+                  Introduzione al Medioevo
+                  <span className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-secondary/30 via-secondary to-secondary/30 rounded-full"></span>
+                </h2>
+              </div>
+              
+              {/* Contenuto principale con layout a due colonne per desktop */}
+              <div 
+                className="rounded-b-lg overflow-hidden shadow-2xl border-b-2 border-x-2 border-secondary/30 content-reveal p-0"
+                style={{
+                  background: 'linear-gradient(to bottom, rgba(121, 22, 15, 0.7), rgba(121, 22, 15, 0.9))',
+                  boxShadow: 'inset 0 0 30px rgba(210, 147, 38, 0.3), 0 10px 30px rgba(0,0,0,0.5)',
+                  backdropFilter: 'blur(8px)',
                   opacity: 0,
                   transform: 'translateY(20px)',
                   transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
                 }}
               >
-                <h2 id="introduzione" className="font-title text-3xl md:text-4xl text-secondary mb-6 text-center glow-text-subtle">Introduzione al Medioevo</h2>
+                <div className="md:flex">
+                  {/* Colonna di testo */}
+                  <div className="md:w-2/3 p-8 md:p-10">
+                    <p className="first-letter:font-medieval first-letter:text-secondary first-letter:text-5xl first-letter:float-left first-letter:mr-2 first-letter:leading-[0.8] text-foreground mb-6 leading-relaxed">
+                      Il Medioevo, periodo storico che abbraccia circa mille anni, dal 476 d.C. (caduta dell'Impero Romano d'Occidente) al 1492 (scoperta dell'America), è un'epoca ricca di contrasti, misteri e fascino. Spesso dipinto con toni cupi nei secoli successivi, che lo definirono "età di mezzo" tra la gloria dell'antichità classica e il rinnovamento rinascimentale, il Medioevo fu in realtà un periodo di grande fermento culturale, spirituale e sociale.
+                    </p>
+                    
+                    <div className="md:hidden mb-6 rounded-lg overflow-hidden border border-secondary/30 shadow-md">
+                      <img 
+                        src="https://images.unsplash.com/photo-1609625961838-b7ee5a5fcf77?q=80&w=600" 
+                        alt="Manoscritto medievale illuminato" 
+                        className="w-full h-auto"
+                      />
+                    </div>
+                    
+                    <p className="text-foreground/90 mb-6 leading-relaxed reveal-text">
+                      In questi secoli nacquero le università, si svilupparono nuove tecnologie agricole, si costruirono le maestose cattedrali gotiche, e si posero le basi per la formazione degli stati nazionali europei. Fu un'epoca di profonda spiritualità, dove la fede permeava ogni aspetto della vita quotidiana, ma anche di notevoli progressi scientifici e filosofici.
+                    </p>
+                    
+                    <blockquote className="border-l-4 border-secondary pl-4 my-6 italic text-secondary quote-animation">
+                      "Il Medioevo non era né così luminoso come lo dipingono i romantici, né così oscuro come lo descrivono gli illuministi."
+                      <footer className="text-right text-sm mt-2 text-foreground/80">— Umberto Eco</footer>
+                    </blockquote>
+                    
+                    <p className="text-foreground/90 leading-relaxed reveal-text-delayed mb-6">
+                      Attraverso questo sito, ci immergeremo nelle curiosità, nelle stranezze e negli aspetti più affascinanti di questo periodo storico complesso, scoprendo come molte delle sue usanze, credenze e invenzioni continuino a influenzare il nostro mondo contemporaneo.
+                    </p>
+                    
+                    <div className="grid grid-cols-2 gap-4 mt-6">
+                      <div className="bg-black/30 p-4 rounded-lg border border-secondary/20">
+                        <h4 className="text-secondary font-medieval text-lg mb-2">Alto Medioevo</h4>
+                        <p className="text-sm text-foreground/80">Periodo dal 476 al 1000 d.C., caratterizzato dalla frammentazione politica, economia rurale e influenza monastica.</p>
+                      </div>
+                      <div className="bg-black/30 p-4 rounded-lg border border-secondary/20">
+                        <h4 className="text-secondary font-medieval text-lg mb-2">Basso Medioevo</h4>
+                        <p className="text-sm text-foreground/80">Periodo dal 1000 al 1492, con rinascita urbana, commerciale e culturale, culminata nelle università e cattedrali gotiche.</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Colonna con immagini - visibile solo su desktop */}
+                  <div className="hidden md:block md:w-1/3 border-l border-secondary/20 bg-black/20">
+                    <div className="h-full flex flex-col justify-between p-4">
+                      <div className="mb-4 rounded-lg overflow-hidden border border-secondary/30 shadow-md">
+                        <img 
+                          src="https://images.unsplash.com/photo-1609625961838-b7ee5a5fcf77?q=80&w=600" 
+                          alt="Manoscritto medievale illuminato" 
+                          className="w-full h-auto"
+                        />
+                        <div className="p-2 bg-black/40 text-xs text-center text-foreground/70">
+                          Manoscritto medievale illuminato
+                        </div>
+                      </div>
+                      
+                      <div className="rounded-lg overflow-hidden border border-secondary/30 shadow-md">
+                        <img 
+                          src="https://images.unsplash.com/photo-1562239050-05290734db4f?q=80&w=600" 
+                          alt="Cattedrale gotica medievale" 
+                          className="w-full h-auto"
+                        />
+                        <div className="p-2 bg-black/40 text-xs text-center text-foreground/70">
+                          Cattedrale gotica medievale
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 
-                <div className="h-1 w-full bg-gradient-to-r from-secondary/30 via-secondary to-secondary/30 rounded-full mb-8 animate-expand"></div>
-                
-                <p className="first-letter:font-medieval first-letter:text-secondary first-letter:text-5xl first-letter:float-left first-letter:mr-2 first-letter:leading-[0.8] text-foreground mb-6 leading-relaxed">
-                  Il Medioevo, periodo storico che abbraccia circa mille anni, dal 476 d.C. (caduta dell'Impero Romano d'Occidente) al 1492 (scoperta dell'America), è un'epoca ricca di contrasti, misteri e fascino. Spesso dipinto con toni cupi nei secoli successivi, che lo definirono "età di mezzo" tra la gloria dell'antichità classica e il rinnovamento rinascimentale, il Medioevo fu in realtà un periodo di grande fermento culturale, spirituale e sociale.
-                </p>
-                
-                <p className="text-foreground/90 mb-6 leading-relaxed reveal-text">
-                  In questi secoli nacquero le università, si svilupparono nuove tecnologie agricole, si costruirono le maestose cattedrali gotiche, e si posero le basi per la formazione degli stati nazionali europei. Fu un'epoca di profonda spiritualità, dove la fede permeava ogni aspetto della vita quotidiana, ma anche di notevoli progressi scientifici e filosofici.
-                </p>
-                
-                <blockquote className="border-l-4 border-secondary pl-4 my-8 italic text-secondary quote-animation">
-                  "Il Medioevo non era né così luminoso come lo dipingono i romantici, né così oscuro come lo descrivono gli illuministi."
-                  <footer className="text-right text-sm mt-2 text-foreground/80">— Umberto Eco</footer>
-                </blockquote>
-                
-                <p className="text-foreground/90 leading-relaxed reveal-text-delayed">
-                  Attraverso questo sito, ci immergeremo nelle curiosità, nelle stranezze e negli aspetti più affascinanti di questo periodo storico complesso, scoprendo come molte delle sue usanze, credenze e invenzioni continuino a influenzare il nostro mondo contemporaneo.
-                </p>
+                {/* Footer con elementi decorativi */}
+                <div className="border-t border-secondary/20 p-4 text-center bg-black/20">
+                  <div className="flex justify-center items-center">
+                    <div className="h-px w-16 bg-secondary/40"></div>
+                    <div className="mx-4 text-secondary/60">⚜</div>
+                    <div className="h-px w-16 bg-secondary/40"></div>
+                  </div>
+                </div>
               </div>
             </div>
             
