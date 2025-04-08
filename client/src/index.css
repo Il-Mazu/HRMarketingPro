@@ -340,3 +340,17 @@
     transform: translateY(0);
   }
 }
+
+@layer utilities {
+  .border-border {
+    border-color: var(--border);
+  }
+
+  .bg-background {
+    background-color: hsl(var(--background));
+  }
+
+  .text-foreground {
+    color: hsl(var(--foreground));
+  }
+}
