@@ -13,7 +13,7 @@ import "./styles/cursor.css";
 function Router() {
   const [location] = useLocation();
   
-  // Aggiungiamo un prefisso per GitHub Pages
+  // Gestione del routing per GitHub Pages
   const basePath = '/HRMarketingPro';
   const currentPath = location.startsWith(basePath) ? location : `${basePath}${location}`;
 
