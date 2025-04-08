@@ -52,12 +52,12 @@ const Header = () => {
             <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === "/" ? "w-full" : ""}`}></span>
           </Link>
           <a 
-            href="/#about" 
+            href="/#introduzione" 
             className="text-foreground hover:text-secondary transition-colors duration-300 font-medieval relative group"
             onClick={(e) => {
               if (location === "/") {
                 e.preventDefault();
-                document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+                document.getElementById("introduzione")?.scrollIntoView({ behavior: "smooth" });
               }
             }}
           >
@@ -115,13 +115,13 @@ const Header = () => {
             </span>
           </Link>
           <a 
-            href="/#about" 
+            href="/#introduzione" 
             className="text-foreground hover:text-secondary transition-colors duration-300 font-medieval text-center py-2"
             onClick={(e) => {
               closeMobileMenu();
               if (location === "/") {
                 e.preventDefault();
-                document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+                document.getElementById("introduzione")?.scrollIntoView({ behavior: "smooth" });
               }
             }}
           >

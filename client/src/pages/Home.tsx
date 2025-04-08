@@ -239,7 +239,7 @@ const Home = () => {
           <div className="max-w-5xl mx-auto px-6 pb-16">
             {/* Finestra moderna in stile medievale */}
             <div 
-              className="relative py-8 px-6 md:px-8 shadow-2xl scroll-reveal bg-charcoal rounded-lg border-2 border-secondary/50"
+              className="relative py-8 px-6 md:px-8 shadow-2xl scroll-reveal rounded-lg border-2 border-secondary/50"
               style={{
                 backdropFilter: 'blur(4px)',
                 minHeight: '240px',
@@ -249,8 +249,8 @@ const Home = () => {
                 justifyContent: 'center',
                 transform: 'translateZ(0)',
                 transition: 'transform 0.3s ease-out',
-                backgroundColor: 'rgba(20, 20, 20, 0.9)',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.4), inset 0 0 15px rgba(210, 147, 38, 0.2)'
+                backgroundColor: 'rgba(121, 22, 15, 0.9)',
+                boxShadow: 'inset 0 0 30px rgba(210, 147, 38, 0.3), 0 10px 30px rgba(0,0,0,0.5)'
               }}
             >
               {/* Contenuto del pannello con animazione migliorata */}
@@ -294,10 +294,10 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div ref={contentRef} className="max-w-4xl mx-auto">
             {/* Sezione sulla storia medievale con design moderno */}
-            <div className="bg-charcoal rounded-lg overflow-hidden shadow-2xl border-2 border-secondary/30 mb-16 transform hover:scale-[1.01] transition-all duration-500"
+            <div className="rounded-lg overflow-hidden shadow-2xl border-2 border-secondary/30 mb-16 transform hover:scale-[1.01] transition-all duration-500"
                 style={{
-                  backgroundColor: 'rgba(20, 20, 20, 0.95)',
-                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(210, 147, 38, 0.15)',
+                  backgroundColor: 'rgba(121, 22, 15, 0.9)',
+                  boxShadow: 'inset 0 0 30px rgba(210, 147, 38, 0.3), 0 10px 30px rgba(0,0,0,0.5)',
                   backdropFilter: 'blur(8px)'
                 }}
             >
