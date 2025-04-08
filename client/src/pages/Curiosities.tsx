@@ -149,10 +149,9 @@ const Curiosities = () => {
             <h2 className="font-title text-3xl text-secondary mb-6">Continua l'Esplorazione</h2>
             <Link 
               href="/"
-              className="group relative inline-block px-8 py-4 mx-4 bg-secondary text-secondary-foreground border-2 border-secondary/80 hover:bg-secondary/90 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95"
+              className="inline-block px-8 py-4 mx-4 bg-secondary text-secondary-foreground border-2 border-secondary/80 hover:bg-secondary/90 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95"
             >
-              <span className="relative z-10">Torna all'Inizio</span>
-              <span className="absolute inset-0 z-0 bg-primary/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 pointer-events-none"></span>
+              Torna all'Inizio
             </Link>
           </div>
         </div>

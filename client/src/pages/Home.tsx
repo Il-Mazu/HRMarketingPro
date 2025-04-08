@@ -340,17 +340,15 @@ const Home = () => {
               </p>
               <Link 
                 href="/curiosities"
-                className="group relative inline-block px-8 py-4 mx-4 bg-secondary text-secondary-foreground border-2 border-secondary/80 hover:bg-secondary/90 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95"
+                className="inline-block px-8 py-4 mx-4 bg-secondary text-secondary-foreground border-2 border-secondary/80 hover:bg-secondary/90 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95"
               >
-                <span className="relative z-10">Visita le Curiosità</span>
-                <span className="absolute inset-0 z-0 bg-primary/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 pointer-events-none"></span>
+                Visita le Curiosità
               </Link>
               <Link 
                 href="/chi-siamo"
-                className="group relative inline-block px-8 py-4 mx-4 bg-primary text-foreground border-2 border-secondary/80 hover:bg-primary/90 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95"
+                className="inline-block px-8 py-4 mx-4 bg-primary text-foreground border-2 border-secondary/80 hover:bg-primary/90 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95"
               >
-                <span className="relative z-10">Chi Siamo</span>
-                <span className="absolute inset-0 z-0 bg-secondary/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 pointer-events-none"></span>
+                Chi Siamo
               </Link>
             </div>
           </div>
