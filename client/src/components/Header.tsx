@@ -65,15 +65,6 @@ const Header = () => {
             <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === getPath("/introduzione") ? "w-full" : ""}`}></span>
           </Link>
           <Link 
-            href={getPath("/curiosita")} 
-            className={`font-medieval relative transition-colors duration-300 group ${
-              location === getPath("/curiosita") ? "text-secondary" : "text-foreground hover:text-secondary"
-            }`}
-          >
-            <span>Curiosità</span>
-            <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === getPath("/curiosita") ? "w-full" : ""}`}></span>
-          </Link>
-          <Link 
             href={getPath("/chi-siamo")} 
             className={`font-medieval relative transition-colors duration-300 group ${
               location === getPath("/chi-siamo") ? "text-secondary" : "text-foreground hover:text-secondary"
@@ -118,16 +109,6 @@ const Header = () => {
             >
               <span>Introduzione</span>
               <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === getPath("/introduzione") ? "w-full" : ""}`}></span>
-            </Link>
-            <Link 
-              href={getPath("/curiosita")} 
-              className={`font-medieval text-2xl relative transition-colors duration-300 group ${
-                location === getPath("/curiosita") ? "text-secondary" : "text-foreground hover:text-secondary"
-              }`}
-              onClick={closeMobileMenu}
-            >
-              <span>Curiosità</span>
-              <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-secondary group-hover:w-full transition-all duration-300 ${location === getPath("/curiosita") ? "w-full" : ""}`}></span>
             </Link>
             <Link 
               href={getPath("/chi-siamo")} 

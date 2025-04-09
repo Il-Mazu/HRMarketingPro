@@ -11,48 +11,85 @@
   }
 
   :root {
-    --background: #1A1A1A;
-    --foreground: #F5F5F5;
-    --secondary: #D4AF37;
-    --charcoal: #2C2C2C;
+    /* Knight Steel Palette */
+    --knight-steel: #1E1E1E;
+    --worn-iron: #6C6C6C;
+    --polished-plate: #BFBFBF;
+    --blood-red: #8B0000;
+    --parchment: #F4F1ED;
+
+    /* Royal Court Palette */
+    --dark-walnut: #2F1B0C;
+    --aged-leather: #84624C;
+    --faded-gold: #D2B48C;
+    --castle-stone: #C5BAA9;
+    --light-scroll: #F6EFE2;
+
+    /* Forest Kingdom Palette */
+    --pine-green: #2E3D23;
+    --mossy-bark: #716040;
+    --fog-grey: #A89F91;
+    --morning-light: #DED3B8;
+    --ember-red: #C04B2C;
+
+    /* Gothic Church Palette */
+    --black-velvet: #1C0D1A;
+    --wine-red: #4E2A2A;
+    --dusky-rose: #7E4E60;
+    --aged-stone: #C1B497;
+    --candlelight: #EAE6DD;
+
+    /* Base Colors */
+    --background: var(--knight-steel);
+    --foreground: var(--parchment);
+    --secondary: var(--faded-gold);
+    --charcoal: var(--black-velvet);
     
-    --card: 40 20% 98%;
-    --card-foreground: 0 0% 12%;
+    /* Card Colors */
+    --card: var(--aged-stone);
+    --card-foreground: var(--black-velvet);
     
-    --popover: 40 20% 98%;
-    --popover-foreground: 0 0% 12%;
+    /* Popover Colors */
+    --popover: var(--light-scroll);
+    --popover-foreground: var(--dark-walnut);
     
-    --primary: 0 56% 25%;
-    --primary-foreground: 40 30% 98%;
+    /* Primary Colors */
+    --primary: var(--wine-red);
+    --primary-foreground: var(--candlelight);
     
-    --muted: 0 0% 45%;
-    --muted-foreground: 0 0% 65%;
+    /* Muted Colors */
+    --muted: var(--fog-grey);
+    --muted-foreground: var(--mossy-bark);
     
-    --accent: 42 70% 55%;
-    --accent-foreground: 0 0% 10%;
+    /* Accent Colors */
+    --accent: var(--aged-leather);
+    --accent-foreground: var(--light-scroll);
     
-    --destructive: 0 85% 60%;
-    --destructive-foreground: 40 30% 94%;
+    /* Destructive Colors */
+    --destructive: var(--blood-red);
+    --destructive-foreground: var(--parchment);
     
-    --border: 42 60% 47%;
-    --input: 42 60% 47%;
-    --ring: 42 60% 47%;
+    /* Border Colors */
+    --border: var(--aged-leather);
+    --input: var(--castle-stone);
+    --ring: var(--faded-gold);
     
-    --sidebar-background: 0 0% 10%;
-    --sidebar-foreground: 45 24% 94%;
-    --sidebar-primary: 42 60% 47%;
-    --sidebar-primary-foreground: 0 0% 18%;
-    --sidebar-accent: 0 56% 23%;
-    --sidebar-accent-foreground: 40 30% 94%;
-    --sidebar-border: 42 60% 47%;
-    --sidebar-ring: 42 60% 47%;
+    /* Sidebar Colors */
+    --sidebar-background: var(--dark-walnut);
+    --sidebar-foreground: var(--light-scroll);
+    --sidebar-primary: var(--faded-gold);
+    --sidebar-primary-foreground: var(--black-velvet);
+    --sidebar-accent: var(--wine-red);
+    --sidebar-accent-foreground: var(--candlelight);
+    --sidebar-border: var(--aged-leather);
+    --sidebar-ring: var(--faded-gold);
     
     --radius: 0rem;
   }
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
-    background-color: hsl(0 0% 10%);
+    background-color: var(--knight-steel);
     background-image: url('/images/medieval-pattern.svg');
     background-attachment: fixed;
     background-size: 300px;
@@ -63,9 +100,9 @@
   
   /* Glow effect for main title */
   .glow-text {
-    text-shadow: 0 0 10px rgba(191, 155, 48, 0.3), 
-                 0 0 20px rgba(191, 155, 48, 0.2), 
-                 0 0 30px rgba(191, 155, 48, 0.1);
+    text-shadow: 0 0 10px rgba(210, 180, 140, 0.3), 
+                 0 0 20px rgba(210, 180, 140, 0.2), 
+                 0 0 30px rgba(210, 180, 140, 0.1);
   }
 
   html {
@@ -78,13 +115,13 @@
   }
   
   ::-webkit-scrollbar-track {
-    background: hsl(0 0% 18%);
-    border-left: 1px solid hsl(29 20% 24%);
+    background: var(--dark-walnut);
+    border-left: 1px solid var(--aged-leather);
   }
   
   ::-webkit-scrollbar-thumb {
-    background: hsl(0 56% 23%);
-    border: 2px solid hsl(42 60% 47%);
+    background: var(--wine-red);
+    border: 2px solid var(--faded-gold);
     border-radius: 0;
   }
 
@@ -103,10 +140,10 @@
   /* Custom parchment effect */
   .parchment {
     position: relative;
-    background-color: hsl(40 30% 94%);
+    background-color: var(--light-scroll);
     background-image: url('/images/parchment-texture.svg');
     background-size: cover;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 0 40px rgba(74, 60, 49, 0.3);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 0 40px rgba(132, 98, 76, 0.3);
     border-radius: 8px;
   }
   
@@ -117,7 +154,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    border: 1px solid hsl(42 60% 47% / 0.3);
+    border: 1px solid var(--faded-gold);
     border-radius: 8px;
     pointer-events: none;
   }
@@ -125,7 +162,7 @@
   /* Medieval divider */
   .medieval-divider {
     height: 20px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='20' viewBox='0 0 100 20'%3E%3Cpath fill='%23BF9B30' d='M50 0L40 10 30 5 20 10 10 5 0 10v10h100V10L90 5 80 10 70 5 60 10z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='20' viewBox='0 0 100 20'%3E%3Cpath fill='%23D2B48C' d='M50 0L40 10 30 5 20 10 10 5 0 10v10h100V10L90 5 80 10 70 5 60 10z'/%3E%3C/svg%3E");
     background-repeat: repeat-x;
     background-size: 100px 20px;
   }
@@ -137,13 +174,13 @@
     float: left;
     line-height: 0.8;
     margin-right: 0.1em;
-    color: hsl(42 60% 47%);
+    color: var(--faded-gold);
   }
   
   /* Shadow glow effect */
   .shadow-glow {
-    box-shadow: 0 0 10px rgba(191, 155, 48, 0.6), 
-                0 0 20px rgba(191, 155, 48, 0.3);
+    box-shadow: 0 0 10px rgba(210, 180, 140, 0.6), 
+                0 0 20px rgba(210, 180, 140, 0.3);
   }
   
   /* Timeline styling */
@@ -152,7 +189,7 @@
   }
   
   .timeline-item:last-child .absolute.left-\[-30px\] {
-    background: linear-gradient(to bottom, hsl(42 60% 47%), transparent 70%);
+    background: linear-gradient(to bottom, var(--faded-gold), transparent 70%);
   }
   
   /* Animazioni */
@@ -238,11 +275,11 @@
   @keyframes pulseSubtle {
     0%, 100% {
       transform: scale(1);
-      box-shadow: 0 0 0 0 rgba(var(--secondary), 0.7);
+      box-shadow: 0 0 0 0 rgba(210, 180, 140, 0.7);
     }
     50% {
       transform: scale(1.05);
-      box-shadow: 0 0 10px 4px rgba(var(--secondary), 0.3);
+      box-shadow: 0 0 10px 4px rgba(210, 180, 140, 0.3);
     }
   }
   
@@ -269,10 +306,10 @@
   
   @keyframes glowPulse {
     0%, 100% {
-      text-shadow: 0 0 5px rgba(var(--secondary), 0.5);
+      text-shadow: 0 0 5px rgba(210, 180, 140, 0.5);
     }
     50% {
-      text-shadow: 0 0 20px rgba(var(--secondary), 0.8), 0 0 30px rgba(var(--secondary), 0.4);
+      text-shadow: 0 0 20px rgba(210, 180, 140, 0.8), 0 0 30px rgba(210, 180, 140, 0.4);
     }
   }
   

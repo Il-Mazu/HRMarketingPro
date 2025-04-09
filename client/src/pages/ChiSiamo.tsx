@@ -265,7 +265,7 @@ const ChiSiamo = () => {
         ref={headerRef}
         className="relative h-[300px] flex items-center justify-center overflow-hidden"
         style={{
-          background: 'linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(45, 45, 45, 0.9))',
+          background: 'linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(26, 15, 2, 0.9))',
           boxShadow: 'inset 0 0 100px rgba(0,0,0,0.5)'
         }}
       >
@@ -279,79 +279,79 @@ const ChiSiamo = () => {
         ></div>
         
         <div className="relative z-10 text-center">
-          <h1 className="text-5xl md:text-6xl font-medieval text-amber-200 mb-4 tracking-wider opacity-0"
+          <h1 className="text-5xl md:text-6xl font-medieval text-[#BF9B30] mb-4 tracking-wider opacity-0"
               style={{
-                textShadow: '0 0 20px rgba(210, 147, 38, 0.4), 0 0 40px rgba(210, 147, 38, 0.2), 0 0 60px rgba(210, 147, 38, 0.1)'
+                textShadow: '0 0 20px rgba(191, 155, 48, 0.4), 0 0 40px rgba(191, 155, 48, 0.2), 0 0 60px rgba(191, 155, 48, 0.1)'
               }}>
             CHI SIAMO
           </h1>
-          <p className="text-stone-300 max-w-3xl mx-auto text-center font-medieval text-lg px-4 opacity-0">
+          <p className="text-[#8B6D3C] max-w-3xl mx-auto text-center font-medieval text-lg px-4 opacity-0">
             La storia della nostra amicizia e della nostra passione per il Medioevo
           </p>
-          <div className="w-24 h-1 bg-amber-200/50 mx-auto mt-4 opacity-0"></div>
+          <div className="w-24 h-1 bg-[#BF9B30]/50 mx-auto mt-4 opacity-0"></div>
         </div>
       </div>
 
       {/* About Us Content */}
-      <section className="py-16 bg-[#1a1a1a]/80">
+      <section className="py-16 bg-[#0a0500]/80">
         <div className="container mx-auto px-4">
           <div ref={contentRef} className="max-w-4xl mx-auto">
             {/* La Nostra Storia Section */}
             <div className="content-section mb-16 transform hover:scale-[1.01] transition-all duration-700">
-              <div className="relative bg-gradient-to-br from-[#1a1a1a]/95 to-[#2a1a1a]/95 rounded-lg overflow-hidden shadow-2xl border border-amber-200/20"
+              <div className="relative bg-gradient-to-br from-[#0a0500]/95 to-[#1a0f02]/95 rounded-lg overflow-hidden shadow-2xl border border-[#BF9B30]/20"
                 style={{
-                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(210, 147, 38, 0.15)',
+                  boxShadow: '0 15px 30px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(191, 155, 48, 0.15)',
                   backdropFilter: 'blur(8px)'
                 }}
               >
                 {/* Decorative corners */}
-                <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-amber-200/40 rounded-tl-lg"></div>
-                <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-amber-200/40 rounded-tr-lg"></div>
-                <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-amber-200/40 rounded-bl-lg"></div>
-                <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-amber-200/40 rounded-br-lg"></div>
+                <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-[#BF9B30]/40 rounded-tl-lg"></div>
+                <div className="absolute top-0 right-0 w-16 h-16 border-t-2 border-r-2 border-[#BF9B30]/40 rounded-tr-lg"></div>
+                <div className="absolute bottom-0 left-0 w-16 h-16 border-b-2 border-l-2 border-[#BF9B30]/40 rounded-bl-lg"></div>
+                <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[#BF9B30]/40 rounded-br-lg"></div>
 
                 {/* Medieval decorative border */}
                 <div className="absolute inset-0 pointer-events-none">
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-amber-200/40 to-transparent"></div>
-                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-amber-200/40 to-transparent"></div>
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 h-32 w-1 bg-gradient-to-b from-transparent via-amber-200/40 to-transparent"></div>
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2 h-32 w-1 bg-gradient-to-b from-transparent via-amber-200/40 to-transparent"></div>
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-[#BF9B30]/40 to-transparent"></div>
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-[#BF9B30]/40 to-transparent"></div>
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 h-32 w-1 bg-gradient-to-b from-transparent via-[#BF9B30]/40 to-transparent"></div>
+                  <div className="absolute right-0 top-1/2 -translate-y-1/2 h-32 w-1 bg-gradient-to-b from-transparent via-[#BF9B30]/40 to-transparent"></div>
                 </div>
 
                 <div className="p-8 md:p-12 relative">
                   {/* Title with decorative elements */}
                   <div className="relative mb-12 text-center">
-                    <h2 className="font-medieval text-3xl text-amber-200 mb-4 relative inline-block">
+                    <h2 className="font-medieval text-3xl text-[#BF9B30] mb-4 relative inline-block">
                       La Nostra Storia
-                      <div className="absolute -bottom-2 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-amber-200 to-transparent"></div>
+                      <div className="absolute -bottom-2 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-[#BF9B30] to-transparent"></div>
                     </h2>
                     {/* Decorative medieval symbols */}
                     <div className="absolute left-1/2 -translate-x-1/2 -bottom-6 w-24 h-1">
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-200/40 to-transparent"></div>
-                      <div className="absolute left-1/2 -translate-x-1/2 -bottom-2 w-16 h-1 bg-gradient-to-r from-transparent via-amber-200/30 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#BF9B30]/40 to-transparent"></div>
+                      <div className="absolute left-1/2 -translate-x-1/2 -bottom-2 w-16 h-1 bg-gradient-to-r from-transparent via-[#BF9B30]/30 to-transparent"></div>
                     </div>
                   </div>
                   
                   <div className="grid md:grid-cols-2 gap-8 items-center">
                     <div className="relative">
                       {/* Text content with medieval initial letter */}
-                      <p className="first-letter:font-medieval first-letter:text-amber-200 first-letter:text-6xl first-letter:float-left first-letter:mr-3 first-letter:leading-[0.8] text-stone-300 mb-6 leading-relaxed relative">
-                        <span className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-transparent via-amber-200/20 to-transparent"></span>
+                      <p className="first-letter:font-medieval first-letter:text-[#BF9B30] first-letter:text-6xl first-letter:float-left first-letter:mr-3 first-letter:leading-[0.8] text-[#8B6D3C] mb-6 leading-relaxed relative">
+                        <span className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-transparent via-[#BF9B30]/20 to-transparent"></span>
                         Siamo due amici uniti da una passione comune: il Medioevo in tutte le sue sfaccettature. La nostra amicizia è nata più di quindici anni fa durante una fiera del libro antico, quando entrambi ci siamo ritrovati a sfogliare la stessa copia di un raro testo sulle leggende medievali italiane.
                       </p>
                       
-                      <p className="text-stone-300/90 mb-6 leading-relaxed pl-4 border-l border-amber-200/20">
+                      <p className="text-[#8B6D3C]/90 mb-6 leading-relaxed pl-4 border-l border-[#BF9B30]/20">
                         Da quel momento, abbiamo condiviso innumerevoli avventure: viaggi alla scoperta di castelli dimenticati, partecipazioni a festival medievali in costume, lunghe notti passate a discutere di storia e leggende.
                       </p>
                     </div>
                     
                     <div className="relative h-[300px] group">
                       {/* Image frame with decorative corners */}
-                      <div className="absolute inset-0 border border-amber-200/30 rounded-lg overflow-hidden">
-                        <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-amber-200/40"></div>
-                        <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-amber-200/40"></div>
-                        <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-amber-200/40"></div>
-                        <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-amber-200/40"></div>
+                      <div className="absolute inset-0 border border-[#BF9B30]/30 rounded-lg overflow-hidden">
+                        <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#BF9B30]/40"></div>
+                        <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#BF9B30]/40"></div>
+                        <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#BF9B30]/40"></div>
+                        <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#BF9B30]/40"></div>
                         <img 
                           src="https://images.unsplash.com/photo-1584727638096-042c45049ebe?q=80&w=1200"
                           alt="Antica biblioteca medievale"
@@ -362,14 +362,14 @@ const ChiSiamo = () => {
                     </div>
                   </div>
                   
-                  <p className="text-stone-300/90 leading-relaxed mt-8 relative">
-                    <span className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-transparent via-amber-200/20 to-transparent"></span>
+                  <p className="text-[#8B6D3C]/90 leading-relaxed mt-8 relative">
+                    <span className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-transparent via-[#BF9B30]/20 to-transparent"></span>
                     Attraverso questo progetto, vogliamo condividere con voi le curiosità, le stranezze e le meraviglie del Medioevo che abbiamo scoperto nel nostro percorso. Crediamo che questo periodo storico, spesso frainteso, abbia molto da insegnare al mondo contemporaneo e meriti di essere esplorato con occhi nuovi.
                   </p>
 
                   {/* Decorative bottom flourish */}
                   <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-48 h-1">
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-amber-200/30 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#BF9B30]/30 to-transparent"></div>
                   </div>
                 </div>
               </div>
@@ -377,16 +377,10 @@ const ChiSiamo = () => {
             
             {/* Call to action */}
             <div className="text-center mt-16">
-              <h2 className="font-title text-3xl text-amber-200 mb-6">Continua l'Esplorazione</h2>
-              <Link 
-                href="/curiosities"
-                className="inline-block px-8 py-4 mx-4 bg-gradient-to-r from-amber-200 to-amber-300 text-[#1a1a1a] border-2 border-amber-200/80 hover:from-amber-300 hover:to-amber-400 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95 shadow-lg hover:shadow-amber-200/20"
-              >
-                Esplora le Curiosità
-              </Link>
+              <h2 className="font-title text-3xl text-[#BF9B30] mb-6">Continua l'Esplorazione</h2>
               <Link 
                 href="/"
-                className="inline-block px-8 py-4 mx-4 bg-[#1a1a1a]/95 text-amber-200 border-2 border-amber-200/80 hover:bg-[#2a1a1a]/95 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95"
+                className="inline-block px-8 py-4 mx-4 bg-[#0a0500]/95 text-[#BF9B30] border-2 border-[#BF9B30]/80 hover:bg-[#1a0f02]/95 transition-all duration-300 font-medieval text-lg tracking-wide hover:scale-105 active:scale-95"
               >
                 Torna all'Inizio
               </Link>
